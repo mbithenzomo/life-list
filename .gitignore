@@ -53,6 +53,8 @@ target/
 
 #migrations
 migrations/
+*.sqlite3
 *.sqlite
+*.db
 
 .DS_Store
