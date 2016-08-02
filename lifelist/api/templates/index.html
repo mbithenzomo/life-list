@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block content %}
+<section id="slider" class="slider-parallax swiper_wrapper full-screen clearfix">
+	<div class="slider-parallax-inner">
+		<div class="fslider" data-speed="3000" data-pause="7500" data-animation="fade" data-arrows="false" data-pagi="false" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; background-color: #333;">
+			<div class="flexslider" style="height: 100% !important;">
+				<div class="slider-wrap" style="height: inherit;">
+					<div class="slide" id="slide-one"></div>
+					<div class="slide" id="slide-two"></div>
+					<div class="slide" id="slide-three"></div>
+				</div>
+			</div>
+		</div>
+		<div id="home-slider-overlay">
+			<div class="vertical-middle">
+				<div class="container clearfix">
+					<div class="tabs authentication-tabs clearfix">
+						<ul class="tab-nav clearfix">
+							<li><a href="#tab-login"><i class="icon-signin"></i><span class="hidden-xs">Login</span></a></li>
+							<li><a href="#tab-register"><i class="icon-user"></i><span class="hidden-xs">Register</span></a></li>
+						</ul>
+						<div class="tab-container">
+							<div class="tab-content clearfix" id="tab-login">
+								<div class="heading-block nobottomborder bottommargin-sm clearfix">
+									<h4 class="fleft">Welcome Back</h4>
+									<div class="clear"></div>
+								</div>
+								<form action="#" method="post" class="nobottommargin">
+									<div class="row">
+										<div class="col-sm-8 col-xs-12 bottommargin-sm">
+											<label for="">Email Address</label>
+											<input type="text" value="" class="sm-form-control" placeholder="Email Address">
+										</div>
+										<div class="col-sm-4 col-xs-12 bottommargin-sm">
+											<label for="">Password</label>
+											<input type="password" value="" class="sm-form-control" placeholder="Password">
+										</div>
+										<div class="col-sm-12">
+											<button class="button button-3d nomargin rightmargin-sm">Login</button>
+											<a href="#" class="more-link fright" style="margin-top: 9px;">Forgot your password?</a>
+										</div>
+									</div>
+								</form>
+							</div>
+							<div class="tab-content clearfix" id="tab-register">
+								<div class="heading-block nobottomborder bottommargin-sm clearfix">
+									<h4 class="fleft">Let The Adventure Begin</h4>
+									<div class="clear"></div>
+								</div>
+								<form action="#" method="post" class="nobottommargin">
+									<div class="row">
+										<div class="col-sm-4 col-xs-12 bottommargin-sm">
+											<label for="">First Name</label>
+											<input type="text" value="" class="sm-form-control" placeholder="Your first name">
+										</div>
+										<div class="col-sm-4 col-xs-12 bottommargin-sm">
+											<label for="">Last Name</label>
+											<input type="text" value="" class="sm-form-control" placeholder="Your last name">
+										</div>
+										<div class="col-sm-4 col-xs-12 bottommargin-sm">
+											<label for="">Username</label>
+											<input type="text" value="" class="sm-form-control" placeholder="Your username">
+										</div>
+										<div class="col-sm-8 bottommargin-sm">
+											<label for="">Email Address</label>
+											<input type="text" value="" class="sm-form-control" placeholder="Your email address">
+										</div>
+										<div class="col-sm-4 col-xs-12 bottommargin-sm">
+											<label for="">Password</label>
+											<input type="password" value="" class="sm-form-control" placeholder="Your password">
+										</div>
+										<div class="col-sm-12">
+											<button class="button button-3d nomargin rightmargin-sm">Register</button>
+											<a href="#" class="more-link fright" style="margin-top: 9px;">Already have a LifeList account?</a>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+{% endblock %}

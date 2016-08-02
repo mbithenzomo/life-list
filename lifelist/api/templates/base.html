@@ -1,0 +1,59 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>LifeList | {% block title %} Choose Your Adventure {% endblock %}</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
+	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" type="text/css" />
+	<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" type="text/css" />
+	<link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" />
+	<link rel="stylesheet" href="{% static 'css/dark.css' %}" type="text/css" />
+	<link rel="stylesheet" href="{% static 'css/travel.css' %}" type="text/css" />
+	<link rel="stylesheet" href="{% static 'css/font-icons.css' %}" type="text/css" />
+	<link rel="stylesheet" href="{% static 'css/animate.css' %}" type="text/css" />
+	<link rel="stylesheet" href="{% static 'css/responsive.css' %}" type="text/css" />
+	<link rel="stylesheet" href="{% static 'css/colours.css' %}" type="text/css" />
+</head>
+<body class="stretched">
+	<div id="wrapper" class="clearfix">
+		<div id="top-bar" class="transparent-topbar dark">
+			<div class="container clearfix">
+				<div class="col_half fright col_last clearfix nobottommargin">
+					<div id="top-social">
+						<ul>
+							<p>LifeList | Choose Your Adventure <i class="icon-heart small"></i></p>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<header id="header" class="transparent-header dark" data-sticky-class="not-dark" data-responsive-class="not-dark">
+			<div id="header-wrap">
+				<div class="container clearfix">
+					<div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
+					<div id="logo">
+						<a href="index.html" class="standard-logo" data-dark-logo="{% static 'images/logo_white_large.png' %}"><img src="{% static 'images/logo_blue_large.png' %}" alt="LifeList"></a>
+						<a href="index.html" class="retina-logo" data-dark-logo="{% static 'images/logo_white_large.png' %}"><img src="{% static 'images/logo_blue_large.png' %}" alt="LifeList"></a>
+					</div>
+				</div>
+			</div>
+		</header>
+    {% block content %}
+    {% endblock content %}
+		<footer id="footer" style="background-color: #222;">
+			<div id="copyrights">
+				<div class="container clearfix">
+					<div class="col_half">
+						Copyright &copy;  {% now "Y" %} <a href="http://mbithenzomo.com" target="_blank">Mbithe Nzomo</a>. All Rights Reserved<br>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</div>
+	<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/plugins.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/functions.js' %}"></script>
+</body>
+</html>

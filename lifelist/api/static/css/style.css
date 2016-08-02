@@ -1,96 +1,3 @@
-/*-----------------------------------------------------------------------------------
-
-	Theme Name: Canvas
-	Theme URI: http://themes.semicolonweb.com/html/canvas
-	Description: The Multi-Purpose Template
-	Author: SemiColonWeb
-	Author URI: http://themeforest.net/user/semicolonweb
-	Version: 4.1
-
------------------------------------------------------------------------------------*/
-
-/* ----------------------------------------------------------------
-
-	- Basic
-	- Typography
-	- Basic Layout Styles
-	- Helper Classes
-	- Sections
-	- Columns & Grids
-	- Flex Slider
-	- Swiper Slider
-	- Top Bar
-	- Header
-		- Logo
-		- Primary Menu
-		- Mega Menu
-		- Top Search
-		- Top Cart
-		- Sticky Header
-		- Page Menu
-		- Side Header
-	- Side Panel
-	- Slider
-	- Page Title
-	- Content
-	- Portfolio
-	- Blog
-	- Shop
-	- Events
-	- Shortcodes
-		- Countdown
-		- Buttons
-		- Promo Boxes
-		- Featured Boxes
-		- Process Steps
-		- Styled Icons
-		- Toggles
-		- Accordions
-		- Tabs
-		- Side Navigation
-		- FAQ List
-		- Clients
-		- Testimonials
-		- Team
-		- Pricing Boxes
-		- Counter
-		- Animated Rounded Skills
-		- Skills Bar
-		- Dropcaps & Highlights
-		- Quotes & Blockquotes
-		- Text Rotater
-	- Owl Carousel
-	- Overlays
-	- Forms
-	- Google Maps
-	- Heading Styles
-	- Divider
-	- Magazine Specific Classes
-	- Go To Top
-	- Error 404
-	- Landing Pages
-	- Preloaders
-	- Toastr Notifications
-	- Footer
-	- Widgets
-		- Tag Cloud
-		- Links
-		- Testimonial & Twitter
-		- Quick Contact Form
-		- Newsletter
-		- Twitter Feed
-		- Navigation Tree
-	- Wedding
-	- Bootstrap Specific
-	- Cookie Notification
-	- Stretched Layout
-	- Page Transitions
-	- Youtube Video Backgrounds
-
----------------------------------------------------------------- */
-
-
-
 /* ----------------------------------------------------------------
 	Basic
 -----------------------------------------------------------------*/
@@ -669,6 +576,24 @@ body.stretched .container-fullwidth {
 .flexslider .slider-wrap > .slide {display: none; -webkit-backface-visibility: hidden;}
 .flexslider .slider-wrap img {width: 100%; display: block;}
 .flex-pauseplay span {text-transform: capitalize;}
+
+#slide-one {
+	background: url('../images/adventure1.jpg') center center;
+	background-size: cover;
+	height: 100% !important;
+}
+
+#slide-two {
+	background: url('../images/adventure2.jpg') center center;
+	background-size: cover;
+	height: 100% !important;
+}
+
+#slide-three {
+	background: url('../images/adventure3.jpg') center center;
+	background-size: cover;
+	height: 100% !important;
+}
 
 .slider-wrap:after {content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0;}
 html[xmlns] .slider-wrap {display: block;}
@@ -3322,6 +3247,9 @@ body:not(.stretched) .slider-parallax .slider-parallax-inner { left: auto; }
 	padding: 50px 0;
 	background-color: #F5F5F5;
 	border-bottom: 1px solid #EEE;
+	/*background-image: url('../images/dashboard.jpg');*/
+	background: url('../images/adventure1.jpg');
+	background-position: center center; padding: 100px 0;
 }
 
 #page-title .container { position: relative; }

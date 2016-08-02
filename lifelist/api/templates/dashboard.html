@@ -1,0 +1,168 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block title %} Home {% endblock %}
+{% block content %}
+<section
+	id="page-title"
+	class="page-title-center page-title-parallax page-title-dark"
+	style="background-image: url('../static/images/dashboard.jpg');
+	background-position: center center; padding: 100px 0;
+	background-size: cover;"
+	data-stellar-background-ratio="0.2">
+	<div class="container clearfix">
+		<h1>Welcome to LifeList</h1>
+		<span>
+			LifeList is a bucket list service that helps you keep track of the
+			things you want to do most. Choose your adventure!
+		</span>
+	</div>
+</section>
+<section id="content">
+	<div class="content-wrap">
+		<div class="container clearfix">
+			<div class="sidebar nobottommargin clearfix">
+				<div class="sidebar-widgets-wrap">
+					<div class="widget clearfix">
+						<button class="button button-rounded btn-block nomargin">
+							<i class="icon-sign-out"></i>
+							Logout
+						</button>
+					</div>
+					<div class="widget clearfix">
+						<button class="button button-rounded btn-block nomargin">
+							<i class="icon-plus"></i>
+							Add Bucket List
+						</button>
+					</div>
+					<div class="widget clearfix">
+						<div class="accordion nobottommargin clearfix">
+							<div class="toggle nobottommargin clearfix">
+								<div class="togglet noleftpadding clearfix">
+									<button class="button button-rounded btn-block nomargin">
+										<i class="toggle-closed icon-caret-right"></i>
+										<i class="toggle-open icon-caret-down"></i>
+										Search Bucket Lists
+									</button>
+								</div>
+								<div class="togglec noleftpadding mt-15">
+									<form class="nobottommargin">
+										<div class="form-process"></div>
+										<div class="col_full">
+											<label for="template-contactform-location">Title</label>
+											<input type="text"
+														 id="template-contactform-location"
+														 name="template-contactform-location"
+														 class="sm-form-control required"
+														 placeholder="Enter title" />
+										</div>
+										<div class="input-daterange travel-date-group">
+											<div class="col_full">
+												<label for="">Added On or After...</label>
+												<input type="text" value="" class="sm-form-control tleft" name="start" placeholder="mm/dd/yyyy">
+											</div>
+											<div class="col_full">
+												<label for="">Added On or Before...</label>
+												<input type="text" value="" class="sm-form-control tleft" name="end" placeholder="mm/dd/yyyy">
+											</div>
+										</div>
+										<div class="col_full nobottommargin">
+											<a href="#" class="button button-3d nomargin">Search</a>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="postcontent nobottommargin col_last clearfix">
+				<div id="posts" class="small-thumbs">
+					<div class="entry clearfix">
+						<div class="row clearfix">
+							<div class="bottommargin-sm visible-sm visible-xs"></div>
+							<div class="col-md-6 col-sm-8">
+								<div class="entry-c">
+									<div class="entry-title">
+										<h2><a href="blog-single.html">24 Before 24</a></h2>
+									</div>
+									<ul class="entry-meta clearfix">
+										<li><i class="icon-calendar"></i>Added: 8th July 2016</li>
+										<li><i class="icon-calendar"></i>Modified: N/A</li>
+									</ul>
+									<div class="entry-content">
+										<p class="nobottommargin">24 things to do before my 24th birthday!</p>
+									</div>
+									<ul class="entry-meta clearfix">
+										<li><a href="#"><i class="icon-eye"></i>View</a></li>
+										<li><a href="#"><i class="icon-pencil"></i>Edit</a></li>
+										<li><a href="#"><i class="icon-trash"></i>Delete</a></li>
+										<li><a href="#"><i class="icon-plus"></i>Add Item</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="entry clearfix">
+						<div class="row clearfix">
+							<div class="bottommargin-sm visible-sm visible-xs"></div>
+							<div class="col-md-6 col-sm-8">
+								<div class="entry-c">
+									<div class="entry-title">
+										<h2><a href="blog-single.html">Knowledge Goals</a></h2>
+									</div>
+									<ul class="entry-meta clearfix">
+										<li><i class="icon-calendar"></i>Added: 1st July 2016</li>
+										<li><i class="icon-calendar"></i>Modified: 4th July 2016</li>
+									</ul>
+									<div class="entry-content">
+										<p class="nobottommargin">Amazing things to learn and expand my knowledge.</p>
+									</div>
+									<ul class="entry-meta clearfix">
+										<li><a href="#"><i class="icon-eye"></i>View</a></li>
+										<li><a href="#"><i class="icon-pencil"></i>Edit</a></li>
+										<li><a href="#"><i class="icon-trash"></i>Delete</a></li>
+										<li><a href="#"><i class="icon-plus"></i>Add Item</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="entry clearfix">
+						<div class="row clearfix">
+							<div class="bottommargin-sm visible-sm visible-xs"></div>
+							<div class="col-md-6 col-sm-8">
+								<div class="entry-c">
+									<div class="entry-title">
+										<h2><a href="blog-single.html">Travel & Adventure!</a></h2>
+									</div>
+									<ul class="entry-meta clearfix">
+										<li><i class="icon-calendar"></i>Added: 29th June 2016</li>
+										<li><i class="icon-calendar"></i>Modified: N/A</li>
+									</ul>
+									<div class="entry-content">
+										<p class="nobottommargin">Places to go, crazy things to do! :)</p>
+									</div>
+									<ul class="entry-meta clearfix">
+										<li><a href="#"><i class="icon-eye"></i>View</a></li>
+										<li><a href="#"><i class="icon-pencil"></i>Edit</a></li>
+										<li><a href="#"><i class="icon-trash"></i>Delete</a></li>
+										<li><a href="#"><i class="icon-plus"></i>Add Item</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<ul class="pagination notopmargin nobottommargin">
+					<li class="disabled"><a href="#">&laquo;</a></li>
+					<li class="active"><a href="#">1</a></li>
+					<li><a href="#">2</a></li>
+					<li><a href="#">3</a></li>
+					<li><a href="#">4</a></li>
+					<li><a href="#">&raquo;</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
+{% endblock %}
