@@ -1,3 +1,5 @@
 from django.contrib import admin
+from models import Bucketlist, Item
 
-# Register your models here.
+admin.site.register(Bucketlist)
+admin.site.register(Item)

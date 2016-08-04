@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
@@ -9,8 +7,8 @@ class Bucketlist(models.Model):
     """ Creates bucketlist  """
 
     created_by = models.ForeignKey("auth.User")
-    title = models.CharField
-    description = models.TextField
+    title = models.CharField(blank=False, max_length=200)
+    description = models.TextField(blank=False)
     date_created = models.DateTimeField(default=timezone.now)
     date_modified = models.DateTimeField(default=timezone.now)
 
@@ -23,8 +21,8 @@ class Item(models.Model):
 
     created_by = models.ForeignKey("auth.User")
     bucketlist = models.ForeignKey("Bucketlist")
-    title = models.CharField
-    description = models.TextField
+    title = models.CharField(blank=False, max_length=200)
+    description = models.TextField(blank=False)
     date_created = models.DateTimeField(default=timezone.now)
     date_modified = models.DateTimeField(default=timezone.now)
     is_done = models.BooleanField(default=False)
