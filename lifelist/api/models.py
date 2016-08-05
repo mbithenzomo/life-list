@@ -17,10 +17,10 @@ class Bucketlist(models.Model):
 
 
 class Item(models.Model):
-    """ Creates items item """
+    """ Creates bucketlist item """
 
     created_by = models.ForeignKey("auth.User")
-    bucketlist = models.ForeignKey("Bucketlist")
+    bucketlist = models.ForeignKey("Bucketlist", related_name="items")
     title = models.CharField(blank=False, max_length=200)
     description = models.TextField(blank=False)
     date_created = models.DateTimeField(default=timezone.now)

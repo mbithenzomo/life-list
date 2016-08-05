@@ -4,8 +4,9 @@ from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from django.contrib.auth.models import User
-from api.models import Bucketlist
-from api.serializers import BucketlistSerializer, UserSerializer
+from api.models import Bucketlist, Item
+from api.serializers import BucketlistSerializer, ItemSerializer, \
+                            UserSerializer
 from api.permissions import IsOwnerOrReadOnly
 
 
@@ -33,26 +34,39 @@ class TestView(TemplateView):
         return render(request, 'test.html')
 
 
-class BucketlistList(generics.ListCreateAPIView):
+class Bucketlists(generics.ListCreateAPIView):
     queryset = Bucketlist.objects.all()
     serializer_class = BucketlistSerializer
     permission_classes = (IsAuthenticated,)
 
 
-class BucketlistDetail(generics.RetrieveUpdateDestroyAPIView):
+class Bucketlist(generics.RetrieveUpdateDestroyAPIView):
     queryset = Bucketlist.objects.all()
     serializer_class = BucketlistSerializer
     permission_classes = (IsAuthenticated,
                           IsOwnerOrReadOnly,)
 
 
-class UserList(generics.ListAPIView):
+class Items(generics.ListCreateAPIView):
+    queryset = Item.objects.all()
+    serializer_class = ItemSerializer
+    permission_classes = (IsAuthenticated,)
+
+
+class Item(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Item.objects.all()
+    serializer_class = ItemSerializer
+    permission_classes = (IsAuthenticated,
+                          IsOwnerOrReadOnly,)
+
+
+class Users(generics.ListAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = (IsAuthenticated,)
 
 
-class UserDetail(generics.RetrieveAPIView):
+class User(generics.RetrieveAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = (IsAuthenticated,)
@@ -61,4 +75,4 @@ class UserDetail(generics.RetrieveAPIView):
         if pk == 'i':
             return Response(UserSerializer(request.user,
                             context={'request': request}).data)
-        return super(UserDetail, self).retrieve(request, pk)
+        return super(User, self).retrieve(request, pk)
