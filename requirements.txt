@@ -1,4 +1,8 @@
 Django==1.9.7
+django-envie==0.0.9
 django-filter==0.13.0
+django-webpack-loader==0.3.3
 djangorestframework==3.3.3
 Markdown==2.6.6
+psycopg2==2.6.2
+PyYAML==3.11
