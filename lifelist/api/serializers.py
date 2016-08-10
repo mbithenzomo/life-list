@@ -27,6 +27,16 @@ class UserSerializer(serializers.ModelSerializer):
                   many=True,
                   queryset=Bucketlist.objects.all())
 
+    password = serializers.CharField(max_length=100,
+                                     style={'input_type': 'password'},
+                                     required=True, write_only=True)
+
+    def create(self, validated_data):
+        user = User(username=validated_data['username'])
+        user.set_password(validated_data['password'])
+        user.save()
+        return user
+
     class Meta:
         model = User
-        fields = ("id", "username", "bucketlists")
+        fields = ("id", "username", "password", "bucketlists")
