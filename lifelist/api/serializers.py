@@ -3,17 +3,6 @@ from api.models import Bucketlist, Item
 from django.contrib.auth.models import User
 
 
-class BucketlistSerializer(serializers.ModelSerializer):
-    items = serializers.PrimaryKeyRelatedField(
-            many=True,
-            queryset=Item.objects.all())
-
-    class Meta:
-        model = Bucketlist
-        fields = ("id", "created_by", "title", "description",
-                  "items", "date_created", "date_modified")
-
-
 class ItemSerializer(serializers.ModelSerializer):
 
     class Meta:
@@ -22,10 +11,21 @@ class ItemSerializer(serializers.ModelSerializer):
                   "date_created", "date_modified", "is_done")
 
 
+class BucketlistSerializer(serializers.ModelSerializer):
+
+    items = ItemSerializer(many=True)
+
+    class Meta:
+        model = Bucketlist
+        fields = ("id", "created_by", "title", "description",
+                  "items", "date_created", "date_modified")
+
+
 class UserSerializer(serializers.ModelSerializer):
-    bucketlists = serializers.PrimaryKeyRelatedField(
-                  many=True,
-                  queryset=Bucketlist.objects.all())
+    bucketlists = serializers.SlugRelatedField(
+        many=True,
+        read_only=True,
+        slug_field='title')
 
     password = serializers.CharField(max_length=100,
                                      style={'input_type': 'password'},
