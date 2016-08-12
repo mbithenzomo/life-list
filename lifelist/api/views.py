@@ -39,6 +39,7 @@ class BucketlistViewSet(viewsets.ModelViewSet):
     """
     Viewset providing `list`, `create`, `retrieve`,
     `update` and `destroy` actions for Bucketlist objects.
+    URL: /api/v1/bucketlists/
     """
     queryset = Bucketlist.objects.all()
     serializer_class = BucketlistSerializer
@@ -53,6 +54,7 @@ class ItemViewSet(viewsets.ModelViewSet):
     """
     Viewset providing `list`, `create`, `retrieve`,
     `update` and `destroy` actions for Item objects.
+    URL: /api/v1/bucketlists/<pk>/items/
     """
     queryset = Item.objects.all()
     serializer_class = ItemSerializer
@@ -60,47 +62,24 @@ class ItemViewSet(viewsets.ModelViewSet):
                           IsOwnerOrReadOnly,)
 
     def perform_create(self, serializer):
-        serializer.save(created_by=self.request.user)
+        bucketlist_id = self.kwargs.get("bucketlist_pk")
+        serializer.save(created_by=self.request.user,
+                        bucketlist_id=bucketlist_id)
+
+    # def perform_create(self, serializer):
+    #     bucketlist_id = self.kwargs.get("bucketlist_pk")
+    #     bucketlists = Bucketlist.objects.all()
+    #     bucketlist = get_object_or_404(bucketlists, id=bucketlist_id)
+    #     if bucketlist:
+    #         serializer.save(created_by=self.request.user,
+    #                         bucketlist_id=bucketlist_id)
 
 
 class UserViewSet(viewsets.ModelViewSet):
     """
-    Viewset prividing `list`, `create` and `retrieve`
+    Viewset providing `list`, `create` and `retrieve`
     actions for User objects.
+    URL: /api/v1/users/
     """
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    permission_classes = (AllowAny,)
-
-    def create(self, request):
-        data = request.data
-        username = data.get("username")
-        password, confirm_password = data.get("password"),\
-            data.get("confirm_password")
-        if not confirm_password:
-            return Response({"error": "You must confirm your password."},
-                            status=status.HTTP_400_BAD_REQUEST)
-        if password == confirm_password:
-            serializer = self.get_serializer(data=data)
-            if serializer.is_valid():
-                user = self.get_object()
-                user.set_password(data['password'])
-                user.save()
-                serializer.save(username=username)
-                return Response(serializer.data,
-                                status=status.HTTP_201_CREATED)
-        else:
-            return Response({"error": "The passwords do not match."},
-                            status=status.HTTP_400_BAD_REQUEST)
-
-    @list_route()
-    def recent_users(self, request):
-        recent_users = User.objects.all().order("-date_created")
-
-        page = self.paginate_queryset(recent_users)
-        if page is not None:
-            serializer = self.get_serializer(page, many=True)
-            return self.get_paginated_response(serializer.data)
-
-        serializer = self.get_serializer(recent_users, many=True)
-        return Response(serializer.data)

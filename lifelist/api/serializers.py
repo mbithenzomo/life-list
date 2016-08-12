@@ -5,6 +5,20 @@ from django.contrib.auth.models import User
 
 class ItemSerializer(serializers.ModelSerializer):
 
+    bucketlist = serializers.StringRelatedField(
+        read_only=True)
+
+    created_by = serializers.SlugRelatedField(
+        read_only=True,
+        slug_field='username')
+
+    date_created = serializers.DateTimeField(format='%d.%m.%Y %H:%M',
+                                             required=False,
+                                             read_only=True)
+
+    date_modified = serializers.DateTimeField(format='%d.%m.%Y %H:%M',
+                                              required=False)
+
     class Meta:
         model = Item
         fields = ("id", "bucketlist", "created_by", "title", "description",
@@ -13,7 +27,19 @@ class ItemSerializer(serializers.ModelSerializer):
 
 class BucketlistSerializer(serializers.ModelSerializer):
 
-    items = ItemSerializer(many=True)
+    created_by = serializers.SlugRelatedField(
+        read_only=True,
+        slug_field='username')
+
+    items = ItemSerializer(many=True,
+                           read_only=True)
+
+    date_created = serializers.DateTimeField(format='%d.%m.%Y %H:%M',
+                                             required=False,
+                                             read_only=True)
+
+    date_modified = serializers.DateTimeField(format='%d.%m.%Y %H:%M',
+                                              required=False)
 
     class Meta:
         model = Bucketlist
@@ -22,10 +48,9 @@ class BucketlistSerializer(serializers.ModelSerializer):
 
 
 class UserSerializer(serializers.ModelSerializer):
-    bucketlists = serializers.SlugRelatedField(
-        many=True,
+    bucketlists = serializers.StringRelatedField(
         read_only=True,
-        slug_field='title')
+        many=True)
 
     password = serializers.CharField(max_length=100,
                                      style={'input_type': 'password'},

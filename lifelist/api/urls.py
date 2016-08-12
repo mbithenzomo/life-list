@@ -1,13 +1,20 @@
 from django.conf.urls import url, include
-from rest_framework.routers import DefaultRouter
+# from rest_framework import renderers
 from rest_framework.authtoken import views as authviews
+from rest_framework_nested import routers
+from api.views import BucketlistViewSet, ItemViewSet, UserViewSet
 from api import views
 
-router = DefaultRouter()
-router.register(r'bucketlists', views.BucketlistViewSet)
-router.register(r'users', views.UserViewSet)
+router = routers.SimpleRouter()
+router.register(r'bucketlists', BucketlistViewSet)
+router.register(r'users', UserViewSet)
+
+bucketlists_router = routers.NestedSimpleRouter(router, r'bucketlists',
+                                                lookup='bucketlist')
+bucketlists_router.register(r'items', ItemViewSet)
 
 urlpatterns = [
     url(r'^', include(router.urls)),
+    url(r'^', include(bucketlists_router.urls)),
     url(r'^auth/login/', authviews.obtain_auth_token),
 ]

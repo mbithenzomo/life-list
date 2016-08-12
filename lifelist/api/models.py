@@ -11,11 +11,11 @@ class Bucketlist(models.Model):
                                    blank=True)
     title = models.CharField(blank=False, max_length=200)
     description = models.TextField(blank=False)
-    date_created = models.DateTimeField(default=timezone.now)
-    date_modified = models.DateTimeField(default=timezone.now)
+    date_created = models.DateTimeField(auto_now_add=True)
+    date_modified = models.DateTimeField(auto_now=True)
 
     def __unicode__(self):
-        return self.title
+        return "{}: {}".format(self.id, self.title)
 
 
 class Item(models.Model):
@@ -27,8 +27,8 @@ class Item(models.Model):
                                    blank=True)
     title = models.CharField(blank=False, max_length=200)
     description = models.TextField(blank=False)
-    date_created = models.DateTimeField(default=timezone.now)
-    date_modified = models.DateTimeField(default=timezone.now)
+    date_created = models.DateTimeField(auto_now_add=True)
+    date_modified = models.DateTimeField(auto_now=True)
     is_done = models.BooleanField(default=False)
 
     def __unicode__(self):
