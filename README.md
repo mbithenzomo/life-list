@@ -19,11 +19,6 @@ Fetch from the develop branch:
 git fetch origin develop
 ```
 
-Navigate to the root folder:
-```
-cd lifelist
-```
-
 Install the required packages:
 ```
 pip install -r requirements.txt
@@ -33,8 +28,6 @@ pip install -r requirements.txt
 
 | Resource URL | Methods | Description | Requires Token |
 | -------- | ------------- | --------- |--------------- |
-| `/api/v1/` | GET  | The index | FALSE |
-| `/api/v1/auth/register/` | POST  | User registration | FALSE |
 |  `/api/v1/auth/login/` | POST | User login | FALSE |
 | `/api/v1/bucketlists/` | GET, POST | A user's bucket lists | TRUE |
 | `/api/v1/bucketlists/<id>/` | GET, PUT, DELETE | A single bucket list | TRUE |
@@ -58,8 +51,8 @@ pip install -r requirements.txt
 
 Copyright (c) 2016 [Mbithe Nzomo](https://github.com/andela-mnzomo)
 
-<sub><sup>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</sup></sub>
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
-<sub><sup>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</sup></sub>
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-<sub><sup>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</sup></sub>
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
