@@ -16,5 +16,5 @@ bucketlists_router.register(r'items', ItemViewSet)
 urlpatterns = [
     url(r'^', include(router.urls)),
     url(r'^', include(bucketlists_router.urls)),
-    url(r'^auth/login/', authviews.obtain_auth_token),
+    url(r'^auth/login/', authviews.obtain_auth_token, name="login"),
 ]

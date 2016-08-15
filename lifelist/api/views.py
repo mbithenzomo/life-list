@@ -66,14 +66,6 @@ class ItemViewSet(viewsets.ModelViewSet):
         serializer.save(created_by=self.request.user,
                         bucketlist_id=bucketlist_id)
 
-    # def perform_create(self, serializer):
-    #     bucketlist_id = self.kwargs.get("bucketlist_pk")
-    #     bucketlists = Bucketlist.objects.all()
-    #     bucketlist = get_object_or_404(bucketlists, id=bucketlist_id)
-    #     if bucketlist:
-    #         serializer.save(created_by=self.request.user,
-    #                         bucketlist_id=bucketlist_id)
-
 
 class UserViewSet(viewsets.ModelViewSet):
     """
