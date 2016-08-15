@@ -41,6 +41,9 @@ pip install -r requirements.txt
 | PUT | Updates an existing resource |
 | DELETE | Deletes an existing resource |
 
+## Testing
+To test, run the following command: `python lifelist/manage.py test`
+
 
 ## Built With...
 * [Django](https://www.djangoproject.com/)
