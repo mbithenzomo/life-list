@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'webpack_loader',
+    'django_nose',
     # LifeList Apps
     'api',
 ]
@@ -135,3 +136,11 @@ WEBPACK_LOADER = {
         'STATS_FILE': os.path.join(BASE_DIR, '../webpack-stats.json'),
     }
 }
+
+# Tests
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+
+NOSE_ARGS = [
+    '--with-coverage',
+    '--cover-package=api',
+]
