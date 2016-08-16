@@ -9,3 +9,8 @@ omit=
     *static/*
     *templates/*
     *migrations/*
+    *admin.py*
+    *api.py*
+    *apps.py*
+    *models.py*
+    *signals.py*
