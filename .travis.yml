@@ -9,6 +9,6 @@ install:
 env:
   - DB=sqlite
 # command to run tests
-script: python manage.py test
+script: python lifelist/manage.py test
 after_success:
   - coveralls
