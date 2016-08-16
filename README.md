@@ -6,6 +6,8 @@
 
 # LifeList
 ![LifeList Logo](https://github.com/andela-mnzomo/life-list/blob/develop/lifelist/api/static/images/logo_blue_large.png)
+
+
 According to the [Oxford Dictionary](http://www.oxforddictionaries.com/definition/english/bucket-list),
 a *bucket list* is a *number of experiences or achievements that a person hopes
 to have or accomplish during their lifetime*.
