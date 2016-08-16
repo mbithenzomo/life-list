@@ -1,8 +1,11 @@
+[![Build Status](https://travis-ci.org/andela-mnzomo/life-list.svg?branch=develop)](https://travis-ci.org/andela-mnzomo/life-list)
+[![Coverage Status](https://coveralls.io/repos/github/andela-mnzomo/life-list/badge.svg)](https://coveralls.io/github/andela-mnzomo/life-list)
 [![Code Health](https://landscape.io/github/andela-mnzomo/life-list/develop/landscape.svg?style=flat)](https://landscape.io/github/andela-mnzomo/life-list/develop)
 ![alt text](https://img.shields.io/badge/python-2.7-blue.svg)
 [![DUB](https://img.shields.io/dub/l/vibe-d.svg)]()
 
 # LifeList
+![LifeList Logo](https://github.com/andela-mnzomo/life-list/blob/develop/lifelist/api/static/images/logo_blue_large.png)
 According to the [Oxford Dictionary](http://www.oxforddictionaries.com/definition/english/bucket-list),
 a *bucket list* is a *number of experiences or achievements that a person hopes
 to have or accomplish during their lifetime*.
