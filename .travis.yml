@@ -12,6 +12,8 @@ env:
 before_script:
   - psql -c "CREATE USER test_user WITH PASSWORD 'test_password';" -U postgres;
   - psql -c "ALTER USER test_user CREATEDB;" -U postgres;
+  - python lifelist/manage.py makemigrations api
+  - python lifelist/manage.py migrate
 # command to run tests
 script: python lifelist/manage.py test
 after_success:
