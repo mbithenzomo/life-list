@@ -1,0 +1,11 @@
+[report]
+omit=
+    *site-packages/*
+    *site-packages/nose/*
+    */python?.?/*
+    *node_modules/*
+    *__init__*
+    *tests/*
+    *static/*
+    *templates/*
+    *migrations/*
