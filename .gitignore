@@ -49,7 +49,7 @@ coverage.xml
 *.pot
 
 # environment files
-.env.*
+# .env.*
 
 # PyBuilder
 target/
