@@ -1,3 +1,4 @@
+[![Code Health](https://landscape.io/github/andela-mnzomo/life-list/develop/landscape.svg?style=flat)](https://landscape.io/github/andela-mnzomo/life-list/develop)
 ![alt text](https://img.shields.io/badge/python-2.7-blue.svg)
 [![DUB](https://img.shields.io/dub/l/vibe-d.svg)]()
 
