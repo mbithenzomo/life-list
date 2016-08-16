@@ -17,6 +17,6 @@ before_script:
   - python lifelist/manage.py migrate
 # command to run tests
 script:
-  - python lifelist/manage.py test
+  - python lifelist/manage.py test api
 after_success:
   - coveralls
