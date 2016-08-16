@@ -8,6 +8,9 @@ install:
   - pip install coveralls
 env:
   - DB=sqlite
+# add db user
+before_script:
+  - psql -c "CREATE USER 'mbithe' WITH PASSWORD 'mbithe2016';" -U postgres
 # command to run tests
 script: python lifelist/manage.py test
 after_success:
