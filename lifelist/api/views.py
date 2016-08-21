@@ -27,14 +27,6 @@ class HomeView(TemplateView):
         return render(request, "dashboard.html")
 
 
-class TestView(TemplateView):
-    """
-    Testing react
-    """
-    def get(self, request):
-        return render(request, "test.html")
-
-
 class BucketlistViewSet(viewsets.ModelViewSet):
     """
     Viewset providing `list`, `create`, `retrieve`,

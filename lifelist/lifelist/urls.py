@@ -1,6 +1,6 @@
 from django.conf.urls import url, include
 from django.contrib import admin
-from api.views import IndexView, HomeView, TestView
+from api.views import IndexView, HomeView
 
 urlpatterns = [
     # Django Admin
@@ -10,5 +10,4 @@ urlpatterns = [
     # Front End
     url(r'^$', IndexView.as_view(), name='index'),
     url(r'^home', HomeView.as_view(), name='home'),
-    url(r'^test', TestView.as_view(), name='test'),
 ]
