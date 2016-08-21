@@ -12,8 +12,7 @@ According to the [Oxford Dictionary](http://www.oxforddictionaries.com/definitio
 a *bucket list* is a *number of experiences or achievements that a person hopes
 to have or accomplish during their lifetime*.
 
-LifeList is a bucket list service built with a `Django` backend and a `ReactJS` frontend.
-
+LifeList is a bucket list service built in Python/Django.
 ## Installation and Set Up
 Clone the repo from GitHub:
 ```
@@ -54,7 +53,6 @@ To test, run the following command: `python lifelist/manage.py test`
 ## Built With...
 * [Django](https://www.djangoproject.com/)
 * [Django Rest Framework](http://www.django-rest-framework.org/)
-* [ReactJS](http://facebook.github.io/react)
 
 ## Credits and License
 

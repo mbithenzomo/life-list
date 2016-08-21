@@ -13,6 +13,9 @@ class Bucketlist(models.Model):
     description = models.TextField(blank=False)
     date_created = models.DateTimeField(auto_now_add=True)
     date_modified = models.DateTimeField(auto_now=True)
+    image = models.ImageField(blank=True, null=True,
+                              upload_to='bucketlist-images',
+                              verbose_name="Bucket List Image")
 
     def __unicode__(self):
         return "{}: {}".format(self.id, self.title)

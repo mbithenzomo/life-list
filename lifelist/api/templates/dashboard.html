@@ -23,10 +23,19 @@
 			<div class="sidebar nobottommargin clearfix">
 				<div class="sidebar-widgets-wrap">
 					<div class="widget clearfix">
-						<button class="button button-rounded btn-block nomargin">
-							<i class="icon-sign-out"></i>
-							Logout
+						<button class="button button-rounded btn-block nomargin"
+										style="pointer-events: none; cursor: default;">
+							<i class="icon-user"></i>
+							Hello, {{ user }}!
 						</button>
+					</div>
+					<div class="widget clearfix">
+						<a href="{% url 'logout' %}">
+							<button class="button button-rounded btn-block nomargin">
+								<i class="icon-signout"></i>
+								Sign Out
+							</button>
+						</a>
 					</div>
 					<div class="widget clearfix">
 						<button class="button button-rounded btn-block nomargin">
@@ -77,90 +86,65 @@
 			</div>
 			<div class="postcontent nobottommargin col_last clearfix">
 				<div id="posts" class="small-thumbs">
-					<div class="entry clearfix">
-						<div class="row clearfix">
-							<div class="bottommargin-sm visible-sm visible-xs"></div>
-							<div class="col-md-6 col-sm-8">
-								<div class="entry-c">
-									<div class="entry-title">
-										<h2><a href="blog-single.html">24 Before 24</a></h2>
+					{% if bucketlists %}
+						<h1>Your Bucket Lists</h1>
+						{% for bucketlist in bucketlists %}
+							<div class="entry clearfix">
+								<div class="row clearfix">
+									<div class="bottommargin-sm visible-sm visible-xs"></div>
+									<div class="col-md-8 col-sm-12">
+										<div class="entry-c">
+											<div class="entry-title">
+												<h2><a href="blog-single.html">{{ bucketlist.title }}</a></h2>
+											</div>
+											<ul class="entry-meta clearfix">
+												<li><i class="icon-calendar"></i>Added: {{ bucketlist.date_created|date:"M d, Y" }}</li>
+												<li><i class="icon-calendar"></i>Modified: {{ bucketlist.date_modified|date:"M d, Y" }}</li>
+											</ul>
+											<div class="entry-content">
+												<p class="nobottommargin" style="text-align:justify;">{{ bucketlist.description }}</p>
+											</div>
+											<ul class="entry-meta clearfix">
+												<li><a href="#"><i class="icon-eye"></i>View</a></li>
+												<li><a href="#"><i class="icon-pencil"></i>Edit</a></li>
+												<li><a href="#"><i class="icon-trash"></i>Delete</a></li>
+												<li><a href="#"><i class="icon-plus"></i>Add Item</a></li>
+											</ul>
+										</div>
 									</div>
-									<ul class="entry-meta clearfix">
-										<li><i class="icon-calendar"></i>Added: 8th July 2016</li>
-										<li><i class="icon-calendar"></i>Modified: N/A</li>
-									</ul>
-									<div class="entry-content">
-										<p class="nobottommargin">24 things to do before my 24th birthday!</p>
+									<div class="col-md-4 col-sm-12">
+										<div class="entry-image">
+												{% if bucketlist.image %}
+													<img src="{{ MEDIA_URL }}{{ bucketlist.image }}" alt= {{ bucketlist.title }}>
+												{% else %}
+													<img class="image_fade" src="{% static 'images/default-bucketlist-image.jpg' %}" alt= {{ bucketlist.title }}>
+													<br/>
+													<p style="width: 70%; margin:0 auto; text-align: center; color: #3DB5E7;"> Change this default image by editing your bucket list!</p>
+												{% endif %}
+										</div>
 									</div>
-									<ul class="entry-meta clearfix">
-										<li><a href="#"><i class="icon-eye"></i>View</a></li>
-										<li><a href="#"><i class="icon-pencil"></i>Edit</a></li>
-										<li><a href="#"><i class="icon-trash"></i>Delete</a></li>
-										<li><a href="#"><i class="icon-plus"></i>Add Item</a></li>
-									</ul>
 								</div>
 							</div>
-						</div>
+						{% endfor %}
+						<ul class="pagination notopmargin nobottommargin">
+							<li class="disabled"><a href="#">&laquo;</a></li>
+							<li class="active"><a href="#">1</a></li>
+							<li><a href="#">2</a></li>
+							<li><a href="#">3</a></li>
+							<li><a href="#">4</a></li>
+							<li><a href="#">&raquo;</a></li>
+						</ul>
+					{% else %}
+					<div style="width: 70%; margin:0 auto; text-align: center; padding-top: 20px;">
+						<h1>Uh Oh!</h1>
+						<h3>
+							Looks like you haven't added a bucket list yet.
+							<br/>
+							Add a new one from the sidebar on the left and let the adventure begin!
+						</h3>
+						<img src="{% static 'images/arrow.png' %}" >
 					</div>
-					<div class="entry clearfix">
-						<div class="row clearfix">
-							<div class="bottommargin-sm visible-sm visible-xs"></div>
-							<div class="col-md-6 col-sm-8">
-								<div class="entry-c">
-									<div class="entry-title">
-										<h2><a href="blog-single.html">Knowledge Goals</a></h2>
-									</div>
-									<ul class="entry-meta clearfix">
-										<li><i class="icon-calendar"></i>Added: 1st July 2016</li>
-										<li><i class="icon-calendar"></i>Modified: 4th July 2016</li>
-									</ul>
-									<div class="entry-content">
-										<p class="nobottommargin">Amazing things to learn and expand my knowledge.</p>
-									</div>
-									<ul class="entry-meta clearfix">
-										<li><a href="#"><i class="icon-eye"></i>View</a></li>
-										<li><a href="#"><i class="icon-pencil"></i>Edit</a></li>
-										<li><a href="#"><i class="icon-trash"></i>Delete</a></li>
-										<li><a href="#"><i class="icon-plus"></i>Add Item</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="entry clearfix">
-						<div class="row clearfix">
-							<div class="bottommargin-sm visible-sm visible-xs"></div>
-							<div class="col-md-6 col-sm-8">
-								<div class="entry-c">
-									<div class="entry-title">
-										<h2><a href="blog-single.html">Travel & Adventure!</a></h2>
-									</div>
-									<ul class="entry-meta clearfix">
-										<li><i class="icon-calendar"></i>Added: 29th June 2016</li>
-										<li><i class="icon-calendar"></i>Modified: N/A</li>
-									</ul>
-									<div class="entry-content">
-										<p class="nobottommargin">Places to go, crazy things to do! :)</p>
-									</div>
-									<ul class="entry-meta clearfix">
-										<li><a href="#"><i class="icon-eye"></i>View</a></li>
-										<li><a href="#"><i class="icon-pencil"></i>Edit</a></li>
-										<li><a href="#"><i class="icon-trash"></i>Delete</a></li>
-										<li><a href="#"><i class="icon-plus"></i>Add Item</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<ul class="pagination notopmargin nobottommargin">
-					<li class="disabled"><a href="#">&laquo;</a></li>
-					<li class="active"><a href="#">1</a></li>
-					<li><a href="#">2</a></li>
-					<li><a href="#">3</a></li>
-					<li><a href="#">4</a></li>
-					<li><a href="#">&raquo;</a></li>
-				</ul>
+					{% endif %}
 			</div>
 		</div>
 	</div>

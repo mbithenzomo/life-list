@@ -67,6 +67,7 @@ TEMPLATES = [
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
+                'django.template.context_processors.media',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
@@ -120,6 +121,10 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'staticfiles'),
 )
 
+# Media files
+MEDIA_ROOT = os.path.join(BASE_DIR, '..', 'media')
+MEDIA_URL = '/media/'
+
 # Rest Framework
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
@@ -143,3 +148,5 @@ NOSE_ARGS = [
     '--with-coverage',
     '--cover-package=api',
 ]
+
+print MEDIA_ROOT
