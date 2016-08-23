@@ -148,5 +148,3 @@ NOSE_ARGS = [
     '--with-coverage',
     '--cover-package=api',
 ]
-
-print MEDIA_ROOT
