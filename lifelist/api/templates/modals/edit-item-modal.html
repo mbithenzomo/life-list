@@ -1,4 +1,4 @@
-<div class="modal fade" id="add-item-{{ item.id }}-modal" tabindex="-1" role="dialog" aria-labelledby="addBucketlist" aria-hidden="true">
+<div class="modal fade" id="edit-item-{{ item.id }}-modal" tabindex="-1" role="dialog" aria-labelledby="addBucketlist" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
         <div class="modal-header">
@@ -6,7 +6,7 @@
           <h4 class="modal-title">Edit Item</h4>
         </div>
         <div id="form-modal-body" class="modal-body">
-          <form action="{% url 'home' %}" method="post" class="nobottommargin">
+          <form action="{% url 'edit-item' pk=item.id %}" method="post" class="nobottommargin">
             {% csrf_token %}
             <div class="row">
               <div class="col-sm-12 col-xs-12 bottommargin-sm">
@@ -16,6 +16,13 @@
               <div class="col-sm-412 col-xs-12 bottommargin-sm">
                 <label>Description <span style="color: #3DB5E7; font-size: large;">*</span></label>
                 <textarea name="description" class="sm-form-control" placeholder="{{ item.description }}" required></textarea>
+              </div>
+              <div class="col-sm-412 col-xs-12 bottommargin-sm">
+                <label>Mark as complete?</label>
+                <select name="is_done">
+                  <option value="True">Yes</option>
+                  <option value="False">No</option>
+                </select>
               </div>
               <div class="col-sm-12">
                 <button class="button button-3d nomargin rightmargin-sm" type="submit">Submit</button>

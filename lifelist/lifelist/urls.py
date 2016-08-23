@@ -4,14 +4,15 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from api.views import IndexView, HomeView, RegisterView, LoginView, \
     LogoutView, BucketlistDetailView, AddBucketlistView, \
-    DeleteBucketlistView, EditBucketlistView
+    EditBucketlistView, DeleteBucketlistView, AddItemView, EditItemView, \
+    DeleteItemView
 
 urlpatterns = [
     # Django Admin
     url(r'^admin/', admin.site.urls),
     # API
     url(r'^api/v1/', include('api.urls')),
-    # Front End
+    # Front-End
     url(r'^$', IndexView.as_view(), name='index'),
     url(r'^home', HomeView.as_view(), name='home'),
     url(r'^register$', RegisterView.as_view(), name='register'),
@@ -20,9 +21,13 @@ urlpatterns = [
     url(r'^bucketlists/(?P<slug>[-\w]+)/$', BucketlistDetailView.as_view(),
         name='bucketlist-detail'),
     url(r'^add-bucketlist/$', AddBucketlistView.as_view(),
-        name="add-bucketlist"),
-    url(r'^delete-bucketlist/(?P<pk>\d+)/$', DeleteBucketlistView.as_view(),
-        name="delete-bucketlist"),
+        name='add-bucketlist'),
     url(r'^edit-bucketlist/(?P<pk>\d+)/$', EditBucketlistView.as_view(),
-        name="edit-bucketlist"),
+        name='edit-bucketlist'),
+    url(r'^delete-bucketlist/(?P<pk>\d+)/$', DeleteBucketlistView.as_view(),
+        name='delete-bucketlist'),
+    url(r'^add-item/$', AddItemView.as_view(), name='add-item'),
+    url(r'^edit-item/(?P<pk>\d+)/$', EditItemView.as_view(), name='edit-item'),
+    url(r'^delete-item/(?P<pk>\d+)/$', DeleteItemView.as_view(),
+        name='delete-item'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

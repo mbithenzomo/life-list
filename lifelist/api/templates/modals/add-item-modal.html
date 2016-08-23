@@ -1,4 +1,4 @@
-<div class="modal fade" id="add-item-modal" tabindex="-1" role="dialog" aria-labelledby="addBucketlist" aria-hidden="true">
+<div class="modal fade" id="add-item-modal-{{ bucketlist.id }}" tabindex="-1" role="dialog" aria-labelledby="addBucketlist" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
         <div class="modal-header">
@@ -6,10 +6,11 @@
           <h4 class="modal-title">Add Item</h4>
         </div>
         <div id="form-modal-body" class="modal-body">
-          <form action="{% url 'home' %}" method="post" class="nobottommargin">
+          <form action="{% url 'add-item' %}" method="post" class="nobottommargin">
             {% csrf_token %}
             <div class="row">
               <div class="col-sm-12 col-xs-12 bottommargin-sm">
+                <input type="hidden" name="bucketlist_id" value="{{ bucketlist.id }}">
                 <label>Title <span style="color: #3DB5E7; font-size: large;">*</span></label>
                 <input type="text" name="title" class="sm-form-control" placeholder="Title" required>
               </div>

@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
-from api.models import Bucketlist
+from api.models import Bucketlist, Item
 
 
 class RegistrationForm(forms.ModelForm):
@@ -26,3 +26,11 @@ class BucketlistForm(forms.ModelForm):
 
         model = Bucketlist
         fields = ('title', 'description', 'image')
+
+
+class ItemForm(forms.ModelForm):
+
+    class Meta:
+
+        model = Item
+        fields = ('title', 'description', 'is_done')
