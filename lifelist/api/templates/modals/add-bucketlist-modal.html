@@ -1,0 +1,35 @@
+<div class="modal fade" id="add-bucketlist-modal" tabindex="-1" role="dialog" aria-labelledby="addBucketlist" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Add Bucket List</h4>
+        </div>
+        <div id="form-modal-body" class="modal-body">
+          <form action="{% url 'add-bucketlist' %}" method="post" class="nobottommargin" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row">
+              <div class="col-sm-12 col-xs-12 bottommargin-sm">
+                <label>Title <span style="color: #3DB5E7; font-size: large;">*</span></label>
+                <input type="text" name="title" class="sm-form-control" placeholder="Title" required>
+              </div>
+              <div class="col-sm-412 col-xs-12 bottommargin-sm">
+                <label>Description <span style="color: #3DB5E7; font-size: large;">*</span></label>
+                <textarea name="description" class="sm-form-control" placeholder="Description" required></textarea>
+              </div>
+              <div class="col-sm-412 col-xs-12 bottommargin-sm">
+                <label>Image</label>
+                <input type="file" name="image">
+              </div>
+              <div class="col-sm-12">
+                <button class="button button-3d nomargin rightmargin-sm" type="submit">Submit</button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+ </div>
