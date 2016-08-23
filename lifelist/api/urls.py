@@ -1,5 +1,4 @@
 from django.conf.urls import url, include
-# from rest_framework import renderers
 from rest_framework.authtoken import views as authviews
 from rest_framework_nested import routers
 from api.views import BucketlistViewSet, ItemViewSet, UserViewSet

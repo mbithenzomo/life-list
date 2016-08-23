@@ -15,7 +15,6 @@
 	<link rel="stylesheet" href="{% static 'css/animate.css' %}" type="text/css" />
 	<link rel="stylesheet" href="{% static 'css/responsive.css' %}" type="text/css" />
 	<link rel="stylesheet" href="{% static 'css/colours.css' %}" type="text/css" />
-</head>
 <body class="stretched">
 	<div id="wrapper" class="clearfix">
 		<div id="top-bar" class="transparent-topbar dark">
@@ -37,6 +36,10 @@
 						<a href="index.html" class="standard-logo" data-dark-logo="{% static 'images/logo_white_large.png' %}"><img src="{% static 'images/logo_blue_large.png' %}" alt="LifeList"></a>
 						<a href="index.html" class="retina-logo" data-dark-logo="{% static 'images/logo_white_large.png' %}"><img src="{% static 'images/logo_blue_large.png' %}" alt="LifeList"></a>
 					</div>
+					<nav id="primary-menu">
+						{% block navbar %}
+				    {% endblock navbar %}
+					</nav>
 				</div>
 			</div>
 		</header>

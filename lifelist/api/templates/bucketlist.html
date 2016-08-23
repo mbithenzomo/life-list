@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block title %} {{ bucketlist.title }} {% endblock %}
+{% block navbar %}
+<ul>
+	<li><a><i class="icon-user"></i> Hi, {{ user }}!</a></li>
+	<li><a href="{% url 'home' %}"><i class="icon-home"></i> Dashboard</a></li>
+	<li>
+		<a data-toggle="modal" href="#add-item-modal">
+			 <i class="icon-plus"></i> Add Item
+		</a>
+	</li>
+	<li>
+    <a data-toggle="modal" href="#edit-bucketlist-{{ bucketlist.id }}-modal">
+      <i class="icon-edit"></i> Edit</a></li>
+    </a>
+	<li>
+		<a data-toggle="modal" href="#delete-bucketlist-{{ bucketlist.id }}-modal">
+			 <i class="icon-trash"></i> Delete
+		</a>
+	</li>
+	<li><a href="{% url 'logout' %}"><i class="icon-signout"></i> Logout</a></li>
+</ul>
+{% endblock navbar %}
+{% block content %}
+	<section
+		id="page-title"
+		class="page-title-center page-title-parallax page-title-dark"
+		{% if bucketlist.image %}
+			style="background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+		  url('{{ bucketlist.image.url }}');
+			background-position: center center; padding: 100px 0;
+			background-size: cover;"
+		{% else %}
+			style="background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+			url('{% static 'images/default-bucketlist-image.jpg' %}');
+			background-position: center center; padding: 100px 0;
+			background-size: cover;"
+		{% endif %}
+		>
+		<div class="container clearfix">
+			<h1>{{ bucketlist.title }}</h1>
+			<ul class="entry-meta clearfix"  style="padding-top: 10px; padding-bottom: 20px;">
+				<li style="float: none !important;">
+					<i class="icon-calendar"></i>Added: {{ bucketlist.date_created|date:"M d, Y" }} /
+					<i class="icon-calendar"></i>Modified: {{ bucketlist.date_modified|date:"M d, Y" }}
+				</li>
+			</ul>
+			<span>
+				{{ bucketlist.description }}
+			</span>
+		</div>
+	</section>
+<section id="content">
+	<div class="content-wrap">
+		<div class="container clearfix">
+			{% if items %}
+				<h3 style="text-align: center;"> Bucket List Items </h3>
+				<div class="table-responsive">
+					<table class="table">
+					<thead>
+						<tr>
+						<th>#</th>
+						<th>Title</th>
+						<th>Description</th>
+						<th>Added</th>
+						<th>Modified</th>
+						<th>Edit</th>
+						<th>Delete</th>
+						<th>Done</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for item in items %}
+						<tr>
+							<td>1</td>
+							<td width="15%">{{ item.title }}</td>
+							<td width="50%">{{ item.description }}</td>
+							<td>
+								{{ item.date_created|date:"M d, Y"  }}
+								<br/>
+								{{ item.date_created|time:"g:i A" }}
+							</td>
+							<td>
+								{{ item.date_modified|date:"M d, Y"  }}
+								<br/>
+								{{ item.date_modified|time:"g:i A" }}
+							</td>
+							<td><a data-toggle="modal" href="#edit-item-{{ item.id }}-modal"><i class="icon-edit"></i></a></td>
+							<td><a data-toggle="modal" href="#delete-item-{{ item.id }}-modal"><i class="icon-trash"></i></a></td>
+							<td><i class="icon-check" style="color: #00CD00;"></i>
+							<i class="icon-remove-sign" style="color:	#DC143C;"></i></td>
+						</tr>
+						<!-- Modals -->
+						{% include 'modals/delete-item-modal.html' %}
+						{% include 'modals/edit-item-modal.html' %}
+						<!-- End modals -->
+						{% endfor %}
+					</tbody>
+					</table>
+				</div>
+			{% else %}
+			<div style="width: 70%; margin:0 auto; text-align: center; padding-top: 20px;">
+				<h3>Uh-oh!</h3>
+				<h4>
+					Looks like you haven't added an item to this bucket list yet.
+					<br/>
+					Add a new one and get started on your next adventure!
+				</h4>
+        <a data-toggle="modal" href="#add-item-modal">
+          <button class="button button-rounded">
+            <i class="icon-plus"></i>
+            Add Item
+          </button>
+        </a>
+			</div>
+			{% endif %}
+		</div>
+		<!-- Modals -->
+		{% include 'modals/edit-bucketlist-modal.html' %}
+		{% include 'modals/delete-bucketlist-modal.html' %}
+		{% include 'modals/add-item-modal.html' %}
+		<!-- End modals -->
+	</div>
+</section>
+{% endblock %}
