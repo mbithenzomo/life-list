@@ -60,4 +60,7 @@ migrations/
 *.sqlite
 *.db
 
+# Local media files
+media/
+
 .DS_Store
