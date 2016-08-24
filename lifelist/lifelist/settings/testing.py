@@ -5,6 +5,7 @@ Development specific settings for lifelist project.
 from .base import *
 
 SECRET_KEY = 'AFD8F8BAE9DB456FBE26262B287DB'
+
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 

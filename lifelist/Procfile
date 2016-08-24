@@ -1,0 +1,1 @@
+web: gunicorn lifelist.wsgi --log-file -
