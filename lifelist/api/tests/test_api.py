@@ -11,7 +11,7 @@ class TestBase(APITestCase):
     # Get authentication token
     def get_token(self):
         """ Returns authentication token """
-        url = reverse("login")
+        url = reverse("api-login")
         self.user = {"username": "testuser",
                      "password": "testpassword"}
         response = self.client.post(url, data=self.user)
@@ -77,7 +77,7 @@ class TestAuth(TestBase):
 
     def test_login(self):
         """ Test user login """
-        url = reverse("login")
+        url = reverse("api-login")
         self.user = {"username": "testuser",
                      "password": "testpassword"}
         response = self.client.post(url, data=self.user)
@@ -86,14 +86,14 @@ class TestAuth(TestBase):
     def test_invalid_credentials(self):
         """ Test that users cannot login with invalid credentials """
         # Invalid username
-        url = reverse("login")
+        url = reverse("api-login")
         self.user = {"username": "invalid",
                      "password": "testpassword"}
         response = self.client.post(url, data=self.user)
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
         # Invalid password
-        url = reverse("login")
+        url = reverse("api-login")
         self.user = {"username": "testuser",
                      "password": "invalid"}
         response = self.client.post(url, data=self.user)
@@ -210,7 +210,7 @@ class TestBucketlists(TestBase):
         self.client.post(url, data=self.user)
 
         # Log new user in and obtain their token
-        url = reverse("login")
+        url = reverse("api-login")
         self.user = {"username": "testuser2",
                      "password": "testpassword"}
         response = self.client.post(url, data=self.user)
@@ -339,7 +339,7 @@ class TestItems(TestBase):
         self.client.post(url, data=self.user)
 
         # Log new user in and obtain their token
-        url = reverse("login")
+        url = reverse("api-login")
         self.user = {"username": "testuser2",
                      "password": "testpassword"}
         response = self.client.post(url, data=self.user)
