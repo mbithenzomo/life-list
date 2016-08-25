@@ -45,7 +45,6 @@
 										</div>
 										<div class="col-sm-12">
 											<button class="button button-3d nomargin rightmargin-sm">Login</button>
-											<a href="#" class="more-link fright" style="margin-top: 9px;">Forgot your password?</a>
 										</div>
 									</div>
 								</form>
@@ -71,8 +70,8 @@
 										</p>
 							    {% endfor %}
 								{% endif %}
-								{% if message %}
-										<p style="color: #3DB5E7;"><i class="icon-check"></i> {{ message }}</p>
+								{% if on_success %}
+										<p style="color: #3DB5E7;"><i class="icon-check"></i> Successfully registered! </p>
 								{% endif %}
 								<form action="{% url 'register' %}" method="post" class="nobottommargin">
 									{% csrf_token %}
@@ -99,7 +98,7 @@
 										</div>
 										<div class="col-sm-12">
 											<button class="button button-3d nomargin rightmargin-sm" type="submit">Register</button>
-											<a href="#tab-login" class="more-link fright" style="margin-top: 9px;">Already have a LifeList account?</a>
+											<a href="?tab-login#tab-login" class="more-link fright" style="margin-top: 9px;">Already have a LifeList account?</a>
 										</div>
 									</div>
 								</form>
