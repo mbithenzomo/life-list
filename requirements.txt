@@ -1,12 +1,14 @@
 appnope==0.1.0
 coverage==4.2
 decorator==4.0.10
+dj-database-url==0.4.1
 Django==1.9.7
 django-autoslug==1.9.3
 django-envie==0.0.9
 django-nose==1.4.4
 djangorestframework==3.3.3
 drf-nested-routers==0.11.1
+gunicorn==19.6.0
 ipdb==0.10.1
 ipython==5.1.0
 ipython-genutils==0.1.0
@@ -25,3 +27,4 @@ PyYAML==3.11
 simplegeneric==0.8.1
 six==1.10.0
 traitlets==4.2.2
+whitenoise==3.2.1
