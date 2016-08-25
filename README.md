@@ -5,7 +5,7 @@
 [![DUB](https://img.shields.io/dub/l/vibe-d.svg)]()
 
 # LifeList
-![LifeList Logo](https://github.com/andela-mnzomo/life-list/blob/develop/lifelist/api/static/images/logo_blue_large.png)
+![LifeList Logo](https://github.com/andela-mnzomo/life-list/blob/develop/lifelist/app/static/images/logo_blue_large.png)
 
 
 According to the [Oxford Dictionary](http://www.oxforddictionaries.com/definition/english/bucket-list),
@@ -13,6 +13,7 @@ a *bucket list* is a *number of experiences or achievements that a person hopes
 to have or accomplish during their lifetime*.
 
 LifeList is a bucket list service built in Python/Django.
+
 ## Installation and Set Up
 Clone the repo from GitHub:
 ```
@@ -46,8 +47,19 @@ pip install -r requirements.txt
 | PUT | Updates an existing resource |
 | DELETE | Deletes an existing resource |
 
+## Web Application
+<<<<<<< HEAD
+<<<<<<< HEAD
+LifeList also has a web application where users can register or login, and add bucket lists as well as items to their existing bucket lists. The application is live at [lifelist-app.herokuapp.com](http://lifelist-app.herokuapp.com/).
+=======
+LifeList also has a web application where users can register or login, and add bucket lists as well as items to their existing bucket lists. The application is live at [lifelist-app.herokuapp.com](http://lifelist-app.herokuapp.com/)]
+>>>>>>> 0a66fed... [Chore] Update README to include a link to the live demo of LifeList on Heroku
+=======
+LifeList also has a web application where users can register or login, and add bucket lists as well as items to their existing bucket lists. The application is live at [lifelist-app.herokuapp.com](http://lifelist-app.herokuapp.com/)
+>>>>>>> ef2c879... [Chore] Update README to include a link to the live demo of LifeList on Heroku
+
 ## Testing
-To test, run the following command: `python lifelist/manage.py test`
+To test, run the following command: `python lifelist/manage.py test lifelist`
 
 
 ## Built With...
