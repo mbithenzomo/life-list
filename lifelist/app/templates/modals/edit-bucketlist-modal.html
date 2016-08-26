@@ -11,11 +11,11 @@
             <div class="row">
               <div class="col-sm-12 col-xs-12 bottommargin-sm">
                 <label>Title</label>
-                <input type="text" name="title" class="sm-form-control" placeholder="{{ bucketlist.title }}" required>
+                <input type="text" name="title" class="sm-form-control" value="{{ bucketlist.title }}" required>
               </div>
               <div class="col-sm-412 col-xs-12 bottommargin-sm">
                 <label>Description</label>
-                <textarea name="description" class="sm-form-control" placeholder="{{ bucketlist.description }}" required></textarea>
+                <textarea name="description" class="sm-form-control">{{ bucketlist.description }}</textarea>
               </div>
               <div class="col-sm-412 col-xs-12 bottommargin-sm">
                 <label>Image</label>
