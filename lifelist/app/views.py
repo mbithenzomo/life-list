@@ -1,8 +1,9 @@
 from django.http import HttpResponseRedirect, Http404
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import View, FormView, TemplateView, DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.core.urlresolvers import reverse, reverse_lazy
+from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
@@ -33,7 +34,17 @@ class RegisterView(View):
     """ View to handle user registration """
     def post(self, request):
         register_form = RegistrationForm(request.POST)
-        if register_form.is_valid():
+
+        password = request.POST.get('password')
+        confirm_password = request.POST.get('confirm_password')
+        email = request.POST.get('email')
+        if password != confirm_password:
+            messages.error(request, "Passwords do not match.")
+
+        elif User.objects.filter(email=email).exists():
+            messages.error(request, "That email address is already in use.")
+
+        elif register_form.is_valid():
             user = register_form.save(commit=False)
             user.first_name = request.POST.get('first_name')
             user.last_name = request.POST.get('last_name')
@@ -41,11 +52,10 @@ class RegisterView(View):
             user.email = request.POST.get('email')
             user.password = request.POST.get('password')
             user.save()
+            messages.success(request, "Successfully registered!")
             return HttpResponseRedirect(reverse('index'))
 
         context = {'register_form': register_form}
-        on_success = request.GET.get('on_success', None)
-        context.update({'on_success': on_success})
         return render(request, 'index.html', context)
 
 
