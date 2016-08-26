@@ -1,4 +1,4 @@
-<div class="modal fade" id="edit-bucketlist-{{ bucketlist.id }}-modal" tabindex="-1" role="dialog" aria-labelledby="addBucketlist" aria-hidden="true">
+<div class="modal fade" id="edit-bucketlist-{{ bucketlist.id }}-modal" tabindex="-1" role="dialog" aria-labelledby="editBucketlist" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
         <div class="modal-header">
@@ -6,16 +6,16 @@
           <h4 class="modal-title">Edit Bucket List</h4>
         </div>
         <div id="form-modal-body" class="modal-body">
-          <form action="{% url 'edit-bucketlist' pk=bucketlist.id %}" method="post" class="nobottommargin">
+          <form action="{% url 'edit-bucketlist' pk=bucketlist.id %}" method="post" class="nobottommargin" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="row">
               <div class="col-sm-12 col-xs-12 bottommargin-sm">
                 <label>Title</label>
-                <input type="text" name="title" class="sm-form-control" placeholder="{{ bucketlist.title }}">
+                <input type="text" name="title" class="sm-form-control" placeholder="{{ bucketlist.title }}" required>
               </div>
               <div class="col-sm-412 col-xs-12 bottommargin-sm">
                 <label>Description</label>
-                <textarea name="description" class="sm-form-control" placeholder="{{ bucketlist.description }}"></textarea>
+                <textarea name="description" class="sm-form-control" placeholder="{{ bucketlist.description }}" required></textarea>
               </div>
               <div class="col-sm-412 col-xs-12 bottommargin-sm">
                 <label>Image</label>

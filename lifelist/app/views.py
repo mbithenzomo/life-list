@@ -38,6 +38,7 @@ class RegisterView(View):
         password = request.POST.get('password')
         confirm_password = request.POST.get('confirm_password')
         email = request.POST.get('email')
+
         if password != confirm_password:
             messages.error(request, "Passwords do not match.")
 
@@ -50,8 +51,9 @@ class RegisterView(View):
             user.last_name = request.POST.get('last_name')
             user.username = request.POST.get('username')
             user.email = request.POST.get('email')
-            user.password = request.POST.get('password')
+            user.set_password(password)
             user.save()
+            print user.password
             messages.success(request, "Successfully registered!")
             return HttpResponseRedirect(reverse('index'))
 
@@ -130,7 +132,7 @@ class EditBucketlistView(UpdateView):
     model = Bucketlist
     form_class = BucketlistForm
     success_url = reverse_lazy('home')
-    template_name = 'dashboard.html'
+    template_name = 'bucketlist.html'
 
     def post(self, request, *args, **kwargs):
         self.object = self.get_object()
