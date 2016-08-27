@@ -16,6 +16,7 @@ DATABASES = {
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Allow all host headers
+DEBUG = False
 ALLOWED_HOSTS = ['*']
 
 # Simplified static file serving.
