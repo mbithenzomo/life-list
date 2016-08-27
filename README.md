@@ -15,20 +15,33 @@ to have or accomplish during their lifetime*.
 LifeList is a bucket list service built in Python/Django.
 
 ## Installation and Set Up
+Prerequisites:
+* [Python 2](https://www.python.org/download/releases/2.7.2/)
+* [virtualenv](https://virtualenv.pypa.io/en/stable/)
+
 Clone the repo from GitHub:
 ```
-git clone https://github.com/andela-mnzomo/lifelist
+git clone https://github.com/andela-mnzomo/life-list
 ```
 
-Fetch from the develop branch:
+Open the life-list directory:
 ```
-git fetch origin develop
+cd life-list
+```
+
+Create a virtual environment for the project and activate it:
+```
+virtualenv lifelist
+source lifelist/bin/activate
 ```
 
 Install the required packages:
 ```
 pip install -r requirements.txt
 ```
+
+## Launching the Program
+Run ```python lifelist/manage.py runserver``` to launch LifeList. You may use [Postman](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop?hl=en) for Google Chrome to run the API. You may also use [Curl](https://curl.haxx.se/), a command line tool. Precede the URL's below with `localhost:8000` to access the endpoints outlined.
 
 ## API Endpoints
 
@@ -59,8 +72,7 @@ LifeList also has a web application where users can register or login, and add b
 >>>>>>> ef2c879... [Chore] Update README to include a link to the live demo of LifeList on Heroku
 
 ## Testing
-To test, run the following command: `python lifelist/manage.py test lifelist`
-
+To test, run the following command: `python lifelist/manage.py test lifelist`.
 
 ## Built With...
 * [Django](https://www.djangoproject.com/)
