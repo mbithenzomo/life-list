@@ -1,28 +1,25 @@
 from django.http import HttpResponseRedirect, Http404
-from django.shortcuts import render, redirect, get_object_or_404
-from django.views.generic import View, FormView, TemplateView, DetailView
-from django.views.generic.edit import CreateView, DeleteView, UpdateView
+from django.shortcuts import render, get_object_or_404
+from django.views.generic import View, TemplateView, DetailView
+from django.views.generic.edit import DeleteView, UpdateView
 from django.core.urlresolvers import reverse, reverse_lazy
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from api.models import Bucketlist, Item
-from app.forms import RegistrationForm, LoginForm, BucketlistForm, ItemForm
+from app.forms import RegistrationForm, BucketlistForm, ItemForm
 
 
 class IndexView(TemplateView):
-    """
-    Handles the index URL
-    """
+    """Handles the index URL, which is the authentication page"""
+
     def get(self, request):
         return render(request, "index.html")
 
 
-class HomeView(LoginRequiredMixin, TemplateView):
-    """
-    Handles the dashboard homepage
-    """
+class DashboardView(LoginRequiredMixin, TemplateView):
+    """Handles the dashboard homepage"""
     login_url = '/'
 
     def get(self, request):
@@ -31,7 +28,8 @@ class HomeView(LoginRequiredMixin, TemplateView):
 
 
 class RegisterView(View):
-    """ View to handle user registration """
+    """View to handle user registration"""
+
     def post(self, request):
         register_form = RegistrationForm(request.POST)
 
@@ -41,10 +39,8 @@ class RegisterView(View):
 
         if password != confirm_password:
             messages.error(request, "Passwords do not match.")
-
         elif User.objects.filter(email=email).exists():
             messages.error(request, "That email address is already in use.")
-
         elif register_form.is_valid():
             user = register_form.save(commit=False)
             user.first_name = request.POST.get('first_name')
@@ -54,37 +50,39 @@ class RegisterView(View):
             user.set_password(password)
             user.save()
             print user.password
-            messages.success(request, "Successfully registered!")
+            messages.success(request,
+                             "Successfully registered! Login to get started.")
             return HttpResponseRedirect(reverse('index'))
-
         context = {'register_form': register_form}
         return render(request, 'index.html', context)
 
 
 class LoginView(View):
-    """ View to handle user login """
+    """View to handle user login"""
+
     def post(self, request):
         username = request.POST.get('username')
         password = request.POST.get('password')
         user = authenticate(username=username, password=password)
         try:
             login(request, user)
-            return HttpResponseRedirect(reverse('home'))
+            return HttpResponseRedirect(reverse('dashboard'))
         except:
-            error = "Incorrect username or password! Please try again."
-            context = {'error': error}
-            return render(request, 'index.html', context)
+            messages.error(request,
+                           "Incorrect username or password! Please try again.")
+            return render(request, 'index.html')
 
 
 class LogoutView(View):
-    """ View to handle user logout """
+    """View to handle user logout"""
+
     def get(self, request, *args, **kwargs):
         logout(request)
         return HttpResponseRedirect(reverse('index'))
 
 
 class BucketlistDetailView(LoginRequiredMixin, DetailView):
-    """ View to handle display of individual bucket lists """
+    """View to handle display of individual bucket list"""
     login_url = '/'
 
     def get(self, request, slug):
@@ -95,7 +93,8 @@ class BucketlistDetailView(LoginRequiredMixin, DetailView):
 
 
 class AddBucketlistView(LoginRequiredMixin, View):
-    """ View to handle adding a bucket list """
+    """View to handle adding a bucket list"""
+
     def post(self, request):
         add_bucketlist_form = BucketlistForm(request.POST, request.FILES)
         if add_bucketlist_form.is_valid():
@@ -105,19 +104,19 @@ class AddBucketlistView(LoginRequiredMixin, View):
             bucketlist.image = request.FILES.get('image')
             bucketlist.created_by = request.user
             bucketlist.save()
-            return HttpResponseRedirect(reverse('home'))
-
+            return HttpResponseRedirect(reverse('dashboard'))
         context = {'add_bucketlist_form': add_bucketlist_form}
         return render(request, 'dashboard.html', context)
 
 
 class DeleteBucketlistView(LoginRequiredMixin, DeleteView):
+    """View to handle deleting a bucket list"""
     model = Bucketlist
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('dashboard')
     template_name = 'dashboard.html'
 
     def get_event(self, queryset=None):
-        """ Hook to ensure bucket list was created by request.user. """
+        """Hook to ensure bucket list was created by request.user """
         bucketlist = super(DeleteBucketlistView, self).get_event()
         if not bucketlist.created_by == self.request.user:
             raise Http404
@@ -129,9 +128,10 @@ class DeleteBucketlistView(LoginRequiredMixin, DeleteView):
 
 
 class EditBucketlistView(UpdateView):
+    """View to handle editing a bucket list"""
     model = Bucketlist
     form_class = BucketlistForm
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('dashboard')
     template_name = 'bucketlist.html'
 
     def post(self, request, *args, **kwargs):
@@ -144,7 +144,8 @@ class EditBucketlistView(UpdateView):
 
 
 class AddItemView(LoginRequiredMixin, View):
-    """ View to handle adding a bucket list """
+    """View to handle adding a bucket list item"""
+
     def post(self, request):
         add_item_form = ItemForm(request.POST, request.FILES)
         if add_item_form.is_valid():
@@ -164,6 +165,7 @@ class AddItemView(LoginRequiredMixin, View):
 
 
 class EditItemView(UpdateView):
+    """View to handle editing a bucket list item"""
     model = Item
     form_class = ItemForm
     template_name = 'bucketlist.html'
@@ -188,7 +190,7 @@ class DeleteItemView(LoginRequiredMixin, DeleteView):
     template_name = 'bucketlist.html'
 
     def get_event(self, queryset=None):
-        """ Hook to ensure item was created by request.user. """
+        """Hook to ensure item was created by request.user"""
         bucketlist = super(DeleteItemView, self).get_event()
         if not bucketlist.created_by == self.request.user:
             raise Http404

@@ -4,7 +4,7 @@
 {% block navbar %}
 <ul>
 	<li><a class="inactiveLink"><i class="icon-user"></i> Hi, {{ user }}!</a></li>
-	<li><a href="{% url 'home' %}"><i class="icon-home"></i> Dashboard</a></li>
+	<li><a href="{% url 'dashboard' %}"><i class="icon-home"></i> Dashboard</a></li>
 	<li>
 		<a data-toggle="modal" href="#add-item-modal-{{ bucketlist.id }}">
 			 <i class="icon-plus"></i> Add Item

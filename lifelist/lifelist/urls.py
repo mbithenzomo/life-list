@@ -2,7 +2,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.conf.urls import url, include
 from django.contrib import admin
-from app.views import IndexView, HomeView, RegisterView, LoginView, \
+from app.views import IndexView, DashboardView, RegisterView, LoginView, \
     LogoutView, BucketlistDetailView, AddBucketlistView, \
     EditBucketlistView, DeleteBucketlistView, AddItemView, EditItemView, \
     DeleteItemView
@@ -14,7 +14,7 @@ urlpatterns = [
     url(r'^api/v1/', include('api.urls')),
     # Front-End
     url(r'^$', IndexView.as_view(), name='index'),
-    url(r'^home', HomeView.as_view(), name='home'),
+    url(r'^dashboard', DashboardView.as_view(), name='dashboard'),
     url(r'^register$', RegisterView.as_view(), name='register'),
     url(r'^login$', LoginView.as_view(), name='login'),
     url(r'^logout$', LogoutView.as_view(), name='logout'),
