@@ -3,7 +3,7 @@
 {% block title %} {{ bucketlist.title }} {% endblock %}
 {% block navbar %}
 <ul>
-	<li><a><i class="icon-user"></i> Hi, {{ user }}!</a></li>
+	<li><a class="inactiveLink"><i class="icon-user"></i> Hi, {{ user }}!</a></li>
 	<li><a href="{% url 'home' %}"><i class="icon-home"></i> Dashboard</a></li>
 	<li>
 		<a data-toggle="modal" href="#add-item-modal-{{ bucketlist.id }}">
@@ -63,11 +63,11 @@
 						<th>#</th>
 						<th>Title</th>
 						<th>Description</th>
+						<th>Completed</th>
 						<th>Added</th>
 						<th>Modified</th>
 						<th>Edit</th>
 						<th>Delete</th>
-						<th>Done</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -76,6 +76,16 @@
 							<td>1</td>
 							<td width="15%">{{ item.title }}</td>
 							<td width="40%">{{ item.description }}</td>
+							<td>
+								<label class="switch">
+								{% if item.is_done %}
+									<input type="checkbox" name="is_done" checked>
+								{% else %}
+									<input type="checkbox">
+								{% endif %}
+									<div class="slider round"></div>
+								</label>
+							</td>
 							<td>
 								{{ item.date_created|date:"M d, Y"  }}
 								<br/>
@@ -88,12 +98,6 @@
 							</td>
 							<td><a data-toggle="modal" href="#edit-item-{{ item.id }}-modal"><i class="icon-edit"></i></a></td>
 							<td><a data-toggle="modal" href="#delete-item-{{ item.id }}-modal"><i class="icon-trash"></i></a></td>
-							<td>
-							{% if item.is_done %}
-								<i class="icon-check" style="color: #00CD00;"></i>
-							{% else %}
-								<i class="icon-remove-sign" style="color:	#DC143C;"></i></td>
-							{% endif %}
 						</tr>
 						<!-- Modals -->
 						{% include 'modals/delete-item-modal.html' %}
