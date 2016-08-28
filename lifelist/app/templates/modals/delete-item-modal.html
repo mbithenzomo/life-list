@@ -12,7 +12,7 @@
           </p>
           <form action="{% url 'delete-item' pk=item.id %}" method="post" class="nobottommargin" enctype="multipart/form-data">
             {% csrf_token %}
-            <button class="button button-3d nomargin rightmargin-sm" type="submit">Yes, I'm Sure</button>
+            <button class="button button-3d nomargin rightmargin-sm" id="delete-item-button" type="submit">Yes, I'm Sure</button>
           </form>
         </div>
         <div class="modal-footer">

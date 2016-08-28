@@ -3,8 +3,8 @@
 {% block title %} Dashboard {% endblock %}
 {% block navbar %}
 <ul>
-	<li><a class="inactiveLink"><i class="icon-user"></i> Hello, {{ user }}!</a></li>
-	<li>
+	<li id="dashboard_username"><a class="inactiveLink"><i class="icon-user"></i> Hello, {{ user }}!</a></li>
+	<li id="add-bucketlist-menu-link">
 		<a data-toggle="modal" href="#add-bucketlist-modal">
 			 <i class="icon-plus"></i> Add Bucket List
 		</a>
@@ -44,30 +44,30 @@
 								<div class="col-md-8 col-sm-12">
 									<div class="entry-c">
 										<div class="entry-title">
-											<h2><a href="{% url 'bucketlist-detail' slug=bucketlist.slug %}">{{ bucketlist.title }}</a></h2>
+											<h2 id="bucketlist_{{ bucketlist.id }}_title"><a href="{% url 'bucketlist-detail' slug=bucketlist.slug %}">{{ bucketlist.title }}</a></h2>
 										</div>
 										<ul class="entry-meta clearfix">
 											<li><i class="icon-calendar"></i>Added: {{ bucketlist.date_created|date:"M d, Y" }}</li>
 											<li><i class="icon-calendar"></i>Modified: {{ bucketlist.date_modified|date:"M d, Y" }}</li>
-											<li><i class="icon-list"></i>Number of Items: {{ bucketlist.items.count }}</li>
+											<li id="bucketlist_{{ bucketlist.id }}_items_count"><i class="icon-list"></i>Number of Items: {{ bucketlist.items.count }}</li>
 										</ul>
 										<div class="entry-content">
 											<br/>
-											<p style="text-align:justify;">{{ bucketlist.description }}</p>
+											<p id="bucketlist_{{ bucketlist.id }}_description" style="text-align:justify;">{{ bucketlist.description }}</p>
 										</div>
 										<ul class="entry-meta clearfix">
 											<li><a href="{% url 'bucketlist-detail' slug=bucketlist.slug %}"><i class="icon-eye"></i>View</a></li>
-											<li>
+											<li id="edit_bucketlist_{{ bucketlist.id }}">
 												<a data-toggle="modal" href="#edit-bucketlist-{{ bucketlist.id }}-modal">
 													<i class="icon-edit"></i>Edit
 												</a>
 											</li>
-											<li>
+											<li id="delete_bucketlist_{{ bucketlist.id }}">
 												<a data-toggle="modal" href="#delete-bucketlist-{{ bucketlist.id }}-modal">
 													<i class="icon-trash"></i>Delete
 												</a>
 											</li>
-											<li>
+											<li id="add_item_bucketlist_{{ bucketlist.id }}">
 												<a data-toggle="modal" href="#add-item-modal-{{ bucketlist.id }}">
 													<i class="icon-plus"></i>Add Item
 												</a>
@@ -92,7 +92,7 @@
 				{% else %}
 				<div style="width: 70%; margin:0 auto; text-align: center; padding-top: 20px;">
 					<h3>Uh-oh!</h3>
-					<h4>
+					<h4 id="no-bucketlists-message">
 						Looks like you haven't added a bucket list yet.
 						<br/>
 						Add a new one and let the adventure begin!

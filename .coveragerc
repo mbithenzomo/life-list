@@ -8,3 +8,4 @@ omit =
     */admin.py
     */apps.py
     */models.py
+    */signals.py

@@ -20,19 +20,19 @@
             <div class="row">
               <div class="col-sm-12 col-xs-12 bottommargin-sm">
                 <label>Title <span style="color: #3DB5E7; font-size: large;">*</span></label>
-                <input type="text" name="title" class="sm-form-control" placeholder="Title" pattern="[A-Za-z0-9]"
+                <input type="text" id="add-bucketlist-title" name="title" class="sm-form-control" placeholder="Title" pattern="[A-Za-z0-9_ ]+"
                 title="Must only contain letters or numbers." required>
               </div>
               <div class="col-sm-412 col-xs-12 bottommargin-sm">
                 <label>Description <span style="color: #3DB5E7; font-size: large;">*</span></label>
-                <textarea name="description" class="sm-form-control" placeholder="Description" required></textarea>
+                <textarea id="add-bucketlist-description" name="description" class="sm-form-control" placeholder="Description" required></textarea>
               </div>
               <div class="col-sm-412 col-xs-12 bottommargin-sm">
                 <label>Image</label>
                 <input type="file" name="image">
               </div>
               <div class="col-sm-12">
-                <button class="button button-3d nomargin rightmargin-sm" type="submit">Submit</button>
+                <button class="button button-3d nomargin rightmargin-sm" id="add-bucketlist-button" type="submit">Submit</button>
               </div>
             </div>
           </form>

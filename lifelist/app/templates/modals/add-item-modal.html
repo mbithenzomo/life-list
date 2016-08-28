@@ -12,14 +12,14 @@
               <div class="col-sm-12 col-xs-12 bottommargin-sm">
                 <input type="hidden" name="bucketlist_id" value="{{ bucketlist.id }}">
                 <label>Title <span style="color: #3DB5E7; font-size: large;">*</span></label>
-                <input type="text" name="title" class="sm-form-control" placeholder="Title" required>
+                <input type="text" id="add-item-title" name="title" class="sm-form-control" placeholder="Title" required>
               </div>
               <div class="col-sm-412 col-xs-12 bottommargin-sm">
                 <label>Description <span style="color: #3DB5E7; font-size: large;">*</span></label>
-                <textarea name="description" class="sm-form-control" placeholder="Description" required></textarea>
+                <textarea id="add-item-description" name="description" class="sm-form-control" placeholder="Description" required></textarea>
               </div>
               <div class="col-sm-12">
-                <button class="button button-3d nomargin rightmargin-sm" type="submit">Submit</button>
+                <button class="button button-3d nomargin rightmargin-sm" id="add-item-button" type="submit">Submit</button>
               </div>
             </div>
           </form>

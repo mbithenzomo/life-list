@@ -5,16 +5,16 @@
 <ul>
 	<li><a class="inactiveLink"><i class="icon-user"></i> Hi, {{ user }}!</a></li>
 	<li><a href="{% url 'dashboard' %}"><i class="icon-home"></i> Dashboard</a></li>
-	<li>
+	<li id="add-item-menu-link">
 		<a data-toggle="modal" href="#add-item-modal-{{ bucketlist.id }}">
 			 <i class="icon-plus"></i> Add Item
 		</a>
 	</li>
-	<li>
+	<li id="edit-bucketlist-menu-link">
     <a data-toggle="modal" href="#edit-bucketlist-{{ bucketlist.id }}-modal">
       <i class="icon-edit"></i> Edit</a></li>
     </a>
-	<li>
+	<li id="delete-bucketlist-menu-link">
 		<a data-toggle="modal" href="#delete-bucketlist-{{ bucketlist.id }}-modal">
 			 <i class="icon-trash"></i> Delete
 		</a>
@@ -39,7 +39,7 @@
 		{% endif %}
 		>
 		<div class="container clearfix">
-			<h1>{{ bucketlist.title }}</h1>
+			<h1 id="bucketlist_page_title">{{ bucketlist.title }}</h1>
 			<ul class="entry-meta clearfix"  style="padding-top: 10px; padding-bottom: 20px;">
 				<li style="float: none !important;">
 					<i class="icon-calendar"></i>Added: {{ bucketlist.date_created|date:"M d, Y" }} /
@@ -73,9 +73,9 @@
 					<tbody>
 						{% for item in items %}
 						<tr>
-							<td>1</td>
-							<td width="15%">{{ item.title }}</td>
-							<td width="40%">{{ item.description }}</td>
+							<td>{{ forloop.counter }}</td>
+							<td id="item_{{ item.id }}_title" width="15%">{{ item.title }}</td>
+							<td id="item_{{ item.id }}_description" width="40%">{{ item.description }}</td>
 							<td>
 								<label class="switch">
 								{% if item.is_done %}
@@ -96,8 +96,8 @@
 								<br/>
 								{{ item.date_modified|time:"g:i A" }}
 							</td>
-							<td><a data-toggle="modal" href="#edit-item-{{ item.id }}-modal"><i class="icon-edit"></i></a></td>
-							<td><a data-toggle="modal" href="#delete-item-{{ item.id }}-modal"><i class="icon-trash"></i></a></td>
+							<td id="edit_item_{{ item.id }}"><a data-toggle="modal" href="#edit-item-{{ item.id }}-modal"><i class="icon-edit"></i></a></td>
+							<td id="delete_item_{{ item.id }}"><a data-toggle="modal" href="#delete-item-{{ item.id }}-modal"><i class="icon-trash"></i></a></td>
 						</tr>
 						<!-- Modals -->
 						{% include 'modals/delete-item-modal.html' %}
@@ -110,7 +110,7 @@
 			{% else %}
 			<div style="width: 70%; margin:0 auto; text-align: center; padding-top: 20px;">
 				<h3>Uh-oh!</h3>
-				<h4>
+				<h4 id="no-items-message">
 					Looks like you haven't added an item to this bucket list yet.
 					<br/>
 					Add a new one and get started on your next adventure!

@@ -11,11 +11,11 @@
             <div class="row">
               <div class="col-sm-12 col-xs-12 bottommargin-sm">
                 <label>Title</label>
-                <input type="text" name="title" class="sm-form-control" value="{{ bucketlist.title }}" required>
+                <input type="text" id="edit-bucketlist-title" name="title" class="sm-form-control" value="{{ bucketlist.title }}" required>
               </div>
               <div class="col-sm-412 col-xs-12 bottommargin-sm">
                 <label>Description</label>
-                <textarea name="description" class="sm-form-control">{{ bucketlist.description }}</textarea>
+                <textarea id="edit-bucketlist-description" name="description" class="sm-form-control">{{ bucketlist.description }}</textarea>
               </div>
               <div class="col-sm-412 col-xs-12 bottommargin-sm">
                 <label>Image</label>
@@ -26,7 +26,7 @@
                 <input type="file"  name="image">
               </div>
               <div class="col-sm-12">
-                <button class="button button-3d nomargin rightmargin-sm" type="submit">Submit</button>
+                <button class="button button-3d nomargin rightmargin-sm" id="edit-bucketlist-button" type="submit">Submit</button>
               </div>
             </div>
           </form>
