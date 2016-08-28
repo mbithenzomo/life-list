@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block title %} 404 Error {% endblock %}
+{% block content %}
+<section
+	id="page-title"
+	class="page-title-center page-title-parallax page-title-dark"
+	style="background-image: url('../static/images/dashboard.jpg');
+	background-position: center center; padding: 100px 0;
+	background-size: cover;"
+	data-stellar-background-ratio="0.2">
+	<div class="container clearfix">
+		<h1>404 Error</h1>
+		<span>
+			Page Not Found
+		</span>
+	</div>
+</section>
+<section id="content">
+	<div class="content-wrap">
+		<div class="container clearfix">
+			<div style="width: 70%; margin:0 auto; text-align: center;">
+				<h3>Nothing To See Here!</h3>
+				<h4>
+					The page you are looking for has been moved, deleted, or does not exist.
+				</h4>
+				<a href="{% url 'home' %}">
+					<button class="button button-rounded">
+						<i class="icon-home"></i>
+						Home
+					</button>
+				</a>
+			</div>
+		</div>
+	</div>
+</section>
+{% endblock %}

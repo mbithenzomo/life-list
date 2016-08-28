@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block title %} Server Error (500){% endblock %}
+{% block content %}
+<section
+	id="page-title"
+	class="page-title-center page-title-parallax page-title-dark"
+	style="background-image: url('../static/images/dashboard.jpg');
+	background-position: center center; padding: 100px 0;
+	background-size: cover;"
+	data-stellar-background-ratio="0.2">
+	<div class="container clearfix">
+		<h1>Server Error (500)</h1>
+		<span>
+			Something went wrong...
+		</span>
+	</div>
+</section>
+<section id="content">
+	<div class="content-wrap">
+		<div class="container clearfix">
+			<div style="width: 70%; margin:0 auto; text-align: center;">
+				<h3>... but we're not sure what.</h3>
+				<h4>
+					Try checking your input, refreshing this page, or going back to the homepage.
+				</h4>
+				<a href="{% url 'home' %}">
+					<button class="button button-rounded">
+						<i class="icon-home"></i>
+						Home
+					</button>
+				</a>
+			</div>
+		</div>
+	</div>
+</section>
+{% endblock %}
