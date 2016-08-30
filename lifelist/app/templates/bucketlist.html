@@ -96,8 +96,8 @@
 								<br/>
 								{{ item.date_modified|time:"g:i A" }}
 							</td>
-							<td id="edit_item_{{ item.id }}"><a data-toggle="modal" href="#edit-item-{{ item.id }}-modal"><i class="icon-edit"></i></a></td>
-							<td id="delete_item_{{ item.id }}"><a data-toggle="modal" href="#delete-item-{{ item.id }}-modal"><i class="icon-trash"></i></a></td>
+							<td><a data-toggle="modal" href="#edit-item-{{ item.id }}-modal"><i class="icon-edit" id="edit_item_{{ item.id }}"></i></a></td>
+							<td><a data-toggle="modal" href="#delete-item-{{ item.id }}-modal"><i class="icon-trash" id="delete_item_{{ item.id }}"></i></a></td>
 						</tr>
 						<!-- Modals -->
 						{% include 'modals/delete-item-modal.html' %}
