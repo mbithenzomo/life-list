@@ -7,7 +7,7 @@ convertfiletovars()
 # Ensure development settings are not used in testing and production:
 if os.getenv('HEROKU') is not None:
     from production import *
-elif os.getenv('TRAVIS') is not None:
+elif os.getenv('CI') is not None:
     from testing import *
 else:
     from development import *

@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'storages',
     # LifeList Apps
     'api',
+    'app',
 ]
 
 MIDDLEWARE_CLASSES = [

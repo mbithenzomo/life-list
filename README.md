@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/andela-mnzomo/life-list.svg?branch=develop)](https://travis-ci.org/andela-mnzomo/life-list)
+[![CircleCI](https://circleci.com/gh/andela-mnzomo/life-list/tree/develop.svg?style=shield)](https://circleci.com/gh/andela-mnzomo/life-list/tree/develop)
 [![Coverage Status](https://coveralls.io/repos/github/andela-mnzomo/life-list/badge.svg)](https://coveralls.io/github/andela-mnzomo/life-list)
 [![Code Health](https://landscape.io/github/andela-mnzomo/life-list/develop/landscape.svg?style=flat)](https://landscape.io/github/andela-mnzomo/life-list/develop)
 ![alt text](https://img.shields.io/badge/python-2.7-blue.svg)
