@@ -15,6 +15,9 @@ before_script:
   - psql -c "CREATE DATABASE test_lifelist OWNER test_user;" -U postgres
   - python lifelist/manage.py makemigrations api
   - python lifelist/manage.py migrate
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
+  - sleep 3
 # command to run tests
 script:
   - python lifelist/manage.py test lifelist

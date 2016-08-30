@@ -3,6 +3,9 @@ import time
 from django.contrib.auth.models import User
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 from api.models import Bucketlist, Item
 
@@ -89,7 +92,7 @@ class LifeListViewsTest(StaticLiveServerTestCase, CreateObjects):
 
     def setUp(self):
         """Setup the test driver and create objects"""
-        self.driver = webdriver.Chrome()
+        self.driver = webdriver.Firefox()
         self.driver.maximize_window()
         self.create_user()
         self.create_bucketlist()
@@ -119,6 +122,9 @@ class LifeListViewsTest(StaticLiveServerTestCase, CreateObjects):
         self.assertEqual(self.driver.current_url,
                          "http://localhost:8081/dashboard")
         time.sleep(1)
+        WebDriverWait(self.driver, 50).until(
+            EC.presence_of_element_located((By.ID, "dashboard_username"))
+        )
         dashboard_username = self.driver.find_element_by_id(
             "dashboard_username").text
         assert test_username.upper() in dashboard_username
@@ -170,7 +176,7 @@ class AuthTest(StaticLiveServerTestCase):
 
     def setUp(self):
         """Setup the test driver"""
-        self.driver = webdriver.Chrome()
+        self.driver = webdriver.Firefox()
         self.driver.maximize_window()
         self.driver.get(
             '%s%s' % (self.live_server_url, "/")
@@ -204,8 +210,10 @@ class AuthTest(StaticLiveServerTestCase):
             "register_username").send_keys(test_username)
         self.driver.find_element_by_id(
             "register_email").send_keys(test_email)
-        self.driver.find_element_by_id(
-            "register_button").click()
+        button = WebDriverWait(self.driver, 50).until(
+            EC.presence_of_element_located((By.ID, "register_button"))
+        )
+        button.click()
         time.sleep(1)
 
         # Check for success message
@@ -225,8 +233,10 @@ class AuthTest(StaticLiveServerTestCase):
             "register_username").send_keys(test_username)
         self.driver.find_element_by_id(
             "register_email").send_keys(test_email)
-        self.driver.find_element_by_id(
-            "register_button").click()
+        button = WebDriverWait(self.driver, 50).until(
+            EC.presence_of_element_located((By.ID, "register_button"))
+        )
+        button.click()
         time.sleep(1)
 
         # Check for error message
@@ -249,8 +259,10 @@ class AuthTest(StaticLiveServerTestCase):
             "register_username").send_keys(test_username2)
         self.driver.find_element_by_id(
             "register_email").send_keys(test_email)
-        self.driver.find_element_by_id(
-            "register_button").click()
+        button = WebDriverWait(self.driver, 50).until(
+            EC.presence_of_element_located((By.ID, "register_button"))
+        )
+        button.click()
         time.sleep(1)
 
         # Check for error message
@@ -273,8 +285,10 @@ class AuthTest(StaticLiveServerTestCase):
             "register_username").send_keys(test_username)
         self.driver.find_element_by_id(
             "register_email").send_keys(test_email2)
-        self.driver.find_element_by_id(
-            "register_button").click()
+        button = WebDriverWait(self.driver, 50).until(
+            EC.presence_of_element_located((By.ID, "register_button"))
+        )
+        button.click()
         time.sleep(1)
 
         # Check for error message
@@ -326,7 +340,7 @@ class BucketlistTest(StaticLiveServerTestCase, CreateObjects):
 
     def setUp(self):
         """Setup the test driver and create initial objects"""
-        self.driver = webdriver.Chrome()
+        self.driver = webdriver.Firefox()
         self.driver.maximize_window()
         self.driver.get(
             '%s%s' % (self.live_server_url, "/")
@@ -347,8 +361,10 @@ class BucketlistTest(StaticLiveServerTestCase, CreateObjects):
 
     def test_add_bucketlist(self):
         """Test addition of a bucket list"""
-        self.driver.find_element_by_id(
-            "add-bucketlist-menu-link").click()
+        link = WebDriverWait(self.driver, 50).until(
+            EC.presence_of_element_located((By.ID, "add-bucketlist-menu-link"))
+        )
+        link.click()
         time.sleep(1)
 
         self.driver.find_element_by_id(
@@ -473,7 +489,7 @@ class ItemTest(StaticLiveServerTestCase, CreateObjects):
 
     def setUp(self):
         """Setup the test driver and create initial objects"""
-        self.driver = webdriver.Chrome()
+        self.driver = webdriver.Firefox()
         self.driver.maximize_window()
         self.driver.get(
             '%s%s' % (self.live_server_url, "/")
@@ -524,10 +540,32 @@ class ItemTest(StaticLiveServerTestCase, CreateObjects):
         self.get_bucketlist_page()
 
         # Open add item modal
-        self.driver.find_element_by_id(
-            "add-item-menu-link").click()
+        link = WebDriverWait(self.driver, 50).until(
+            EC.presence_of_element_located((By.ID, "add-item-menu-link"))
+        )
+        link.click()
 
         self.add_item_and_confirm()
+
+    def test_delete_item(self):
+        """Test deletion of item"""
+        self.test_add_item_page()
+        self.get_bucketlist_page()
+
+        # Open delete item modal
+        test_item = Item.objects.all()[:1].get()
+        delete_item_link = "delete_item_" + str(test_item.id)
+        self.driver.find_element_by_id(
+            delete_item_link).click()
+        time.sleep(1)
+
+        # Delete item
+        self.driver.find_element_by_id(
+            "delete-item-button").click()
+        time.sleep(1)
+
+        # Confirm deletion
+        self.assertEqual(Item.objects.count(), 0)
 
     def test_edit_item(self):
         """Test editing of item"""
