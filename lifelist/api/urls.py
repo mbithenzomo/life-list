@@ -1,8 +1,7 @@
+from api.views import BucketlistViewSet, ItemViewSet, UserViewSet
 from django.conf.urls import url, include
 from rest_framework.authtoken import views as authviews
 from rest_framework_nested import routers
-from api.views import BucketlistViewSet, ItemViewSet, UserViewSet
-from api import views
 
 router = routers.SimpleRouter()
 router.register(r'bucketlists', BucketlistViewSet)

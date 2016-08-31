@@ -354,7 +354,8 @@ class BucketlistTest(StaticLiveServerTestCase, CreateObjects):
         self.driver.find_element_by_id(
             "add-bucketlist-title").send_keys(test_bucketlist_title)
         self.driver.find_element_by_id(
-            "add-bucketlist-description").send_keys(test_bucketlist_description)
+            "add-bucketlist-description").send_keys(
+                test_bucketlist_description)
         self.driver.find_element_by_id(
             "add-bucketlist-button").click()
         time.sleep(1)

@@ -1,6 +1,6 @@
-from rest_framework import serializers
 from api.models import Bucketlist, Item
 from django.contrib.auth.models import User
+from rest_framework import serializers
 
 
 class ItemSerializer(serializers.ModelSerializer):

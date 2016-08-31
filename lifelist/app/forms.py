@@ -1,7 +1,6 @@
+from api.models import Bucketlist, Item
 from django import forms
 from django.contrib.auth.models import User
-from django.core.exceptions import ValidationError
-from api.models import Bucketlist, Item
 
 
 class RegistrationForm(forms.ModelForm):

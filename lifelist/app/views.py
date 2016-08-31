@@ -1,14 +1,14 @@
-from django.http import HttpResponseRedirect, Http404
-from django.shortcuts import render, get_object_or_404
-from django.views.generic import View, TemplateView, DetailView
-from django.views.generic.edit import DeleteView, UpdateView
-from django.core.urlresolvers import reverse, reverse_lazy
+from app.forms import RegistrationForm, BucketlistForm, ItemForm
+from api.models import Bucketlist, Item
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
-from api.models import Bucketlist, Item
-from app.forms import RegistrationForm, BucketlistForm, ItemForm
+from django.core.urlresolvers import reverse, reverse_lazy
+from django.http import HttpResponseRedirect, Http404
+from django.shortcuts import render, get_object_or_404
+from django.views.generic import View, TemplateView, DetailView
+from django.views.generic.edit import DeleteView, UpdateView
 
 
 class IndexView(TemplateView):
