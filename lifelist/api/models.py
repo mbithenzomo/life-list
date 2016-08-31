@@ -12,7 +12,7 @@ class Bucketlist(models.Model):
                                    blank=True)
     title = models.CharField(blank=False, max_length=200)
     description = models.TextField(blank=False)
-    slug = AutoSlugField(blank=False, populate_from='title')
+    slug = AutoSlugField(blank=False, populate_from='title', unique=True)
     date_created = models.DateTimeField(auto_now_add=True)
     date_modified = models.DateTimeField(auto_now=True)
     image = models.ImageField(blank=True, null=True,
