@@ -1,25 +1,43 @@
-<div class="modal fade" id="add-item-modal-{{ bucketlist.id }}" tabindex="-1" role="dialog" aria-labelledby="addItem" aria-hidden="true">
+<div class="modal fade"
+  {% if add_item %}
+    id="add-item-modal-{{ bucketlist.id }}"
+  {% else %}
+    id="edit-item-{{ item.id }}-modal"
+  {% endif %}
+  tabindex="-1" role="dialog" aria-labelledby="addItem" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title">Add Item</h4>
+          <h4 class="modal-title">
+            {% if add_item %}
+              Add Item
+            {% else %}
+              Edit Item
+            {% endif %}
+          </h4>
         </div>
         <div id="form-modal-body" class="modal-body">
-          <form action="{% url 'add-item' %}" method="post" class="nobottommargin">
+          <form
+          {% if add_item %}
+            action="{% url 'add-item' %}"
+          {% else %}
+            action="{% url 'edit-item' pk=item.id %}"
+          {% endif %}
+            method="post" class="nobottommargin">
             {% csrf_token %}
             <div class="row">
               <div class="col-sm-12 col-xs-12 bottommargin-sm">
                 <input type="hidden" name="bucketlist_id" value="{{ bucketlist.id }}">
                 <label>Title <span style="color: #3DB5E7; font-size: large;">*</span></label>
-                <input type="text" id="add-item-title" name="title" class="sm-form-control" placeholder="Title" required>
+                <input type="text" id="item-title" name="title" value="{{ item.title }}" class="sm-form-control" placeholder="Title" required>
               </div>
               <div class="col-sm-412 col-xs-12 bottommargin-sm">
                 <label>Description <span style="color: #3DB5E7; font-size: large;">*</span></label>
-                <textarea id="add-item-description" name="description" class="sm-form-control" placeholder="Description" required></textarea>
+                <textarea id="item-description" name="description" class="sm-form-control" placeholder="Description" required>{{ item.description }}</textarea>
               </div>
               <div class="col-sm-12">
-                <button class="button button-3d nomargin rightmargin-sm" id="add-item-button" type="submit">Submit</button>
+                <button class="button button-3d nomargin rightmargin-sm" id="item-button" type="submit">Submit</button>
               </div>
             </div>
           </form>

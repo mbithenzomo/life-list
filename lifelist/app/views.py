@@ -24,7 +24,8 @@ class DashboardView(LoginRequiredMixin, TemplateView):
 
     def get(self, request):
         bucketlists = Bucketlist.objects.filter(created_by=request.user)
-        return render(request, "dashboard.html", {'bucketlists': bucketlists})
+        context = {'bucketlists': bucketlists}
+        return render(request, "dashboard.html", context)
 
 
 class RegisterView(View):
@@ -88,7 +89,10 @@ class BucketlistDetailView(LoginRequiredMixin, DetailView):
     def get(self, request, slug):
         bucketlist = get_object_or_404(Bucketlist, slug=slug)
         items = Item.objects.filter(item_bucketlist=bucketlist)
-        context = {'bucketlist': bucketlist, 'items': items}
+        context = {
+            'bucketlist': bucketlist,
+            'items': items
+            }
         return render(request, 'bucketlist.html', context)
 
 
@@ -97,6 +101,7 @@ class AddBucketlistView(LoginRequiredMixin, View):
 
     def post(self, request):
         add_bucketlist_form = BucketlistForm(request.POST, request.FILES)
+        add_bucketlist = True
         if add_bucketlist_form.is_valid():
             bucketlist = add_bucketlist_form.save(commit=False)
             bucketlist.title = request.POST.get('title')
@@ -105,7 +110,10 @@ class AddBucketlistView(LoginRequiredMixin, View):
             bucketlist.created_by = request.user
             bucketlist.save()
             return HttpResponseRedirect(reverse('dashboard'))
-        context = {'add_bucketlist_form': add_bucketlist_form}
+        context = {
+            'add_bucketlist_form': add_bucketlist_form,
+            'add_bucketlist': add_bucketlist
+            }
         return render(request, 'dashboard.html', context)
 
 
@@ -148,6 +156,7 @@ class AddItemView(LoginRequiredMixin, View):
 
     def post(self, request):
         add_item_form = ItemForm(request.POST, request.FILES)
+        add_item = True
         if add_item_form.is_valid():
             item = add_item_form.save(commit=False)
             item.title = request.POST.get('title')
@@ -159,7 +168,10 @@ class AddItemView(LoginRequiredMixin, View):
                 'bucketlist-detail',
                 kwargs={'slug': item.item_bucketlist.slug}))
 
-        context = {'add_item_form': add_item_form}
+        context = {
+            'add_item_form': add_item_form,
+            'add_item': add_item
+            }
         return render(request, 'dashboard.html', context)
 
 

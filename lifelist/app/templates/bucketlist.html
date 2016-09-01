@@ -72,37 +72,39 @@
 					</thead>
 					<tbody>
 						{% for item in items %}
-						<tr>
-							<td>{{ forloop.counter }}</td>
-							<td id="item_{{ item.id }}_title" width="15%">{{ item.title }}</td>
-							<td id="item_{{ item.id }}_description" width="40%">{{ item.description }}</td>
-							<td>
-								<label class="switch">
-								{% if item.is_done %}
-									<input type="checkbox" name="is_done" checked>
-								{% else %}
-									<input type="checkbox">
-								{% endif %}
-									<div class="slider round"></div>
-								</label>
-							</td>
-							<td>
-								{{ item.date_created|date:"M d, Y"  }}
-								<br/>
-								{{ item.date_created|time:"g:i A" }}
-							</td>
-							<td>
-								{{ item.date_modified|date:"M d, Y"  }}
-								<br/>
-								{{ item.date_modified|time:"g:i A" }}
-							</td>
-							<td><a data-toggle="modal" href="#edit-item-{{ item.id }}-modal"><i class="icon-edit" id="edit_item_{{ item.id }}"></i></a></td>
-							<td><a data-toggle="modal" href="#delete-item-{{ item.id }}-modal"><i class="icon-trash" id="delete_item_{{ item.id }}"></i></a></td>
-						</tr>
-						<!-- Modals -->
-						{% include 'modals/delete-item-modal.html' %}
-						{% include 'modals/edit-item-modal.html' %}
-						<!-- End modals -->
+							<!-- Modals -->
+							{% with add_item=False %}
+								{% include 'modals/item-modal.html' %}
+								{% include 'modals/delete-item-modal.html' %}
+							{% endwith %}
+							<!-- End modals -->
+							<tr>
+								<td>{{ forloop.counter }}</td>
+								<td id="item_{{ item.id }}_title" width="15%">{{ item.title }}</td>
+								<td id="item_{{ item.id }}_description" width="40%">{{ item.description }}</td>
+								<td>
+									<label class="switch">
+									{% if item.is_done %}
+										<input type="checkbox" name="is_done" checked>
+									{% else %}
+										<input type="checkbox">
+									{% endif %}
+										<div class="slider round"></div>
+									</label>
+								</td>
+								<td>
+									{{ item.date_created|date:"M d, Y"  }}
+									<br/>
+									{{ item.date_created|time:"g:i A" }}
+								</td>
+								<td>
+									{{ item.date_modified|date:"M d, Y"  }}
+									<br/>
+									{{ item.date_modified|time:"g:i A" }}
+								</td>
+								<td><a data-toggle="modal" href="#edit-item-{{ item.id }}-modal"><i class="icon-edit" id="edit_item_{{ item.id }}"></i></a></td>
+								<td><a data-toggle="modal" href="#delete-item-{{ item.id }}-modal"><i class="icon-trash" id="delete_item_{{ item.id }}"></i></a></td>
+							</tr>
 						{% endfor %}
 					</tbody>
 					</table>
@@ -125,9 +127,11 @@
 			{% endif %}
 		</div>
 		<!-- Modals -->
-		{% include 'modals/edit-bucketlist-modal.html' %}
-		{% include 'modals/delete-bucketlist-modal.html' %}
-		{% include 'modals/add-item-modal.html' %}
+		{% with add_bucketlist=False add_item=True %}
+			{% include 'modals/bucketlist-modal.html' %}
+			{% include 'modals/delete-bucketlist-modal.html' %}
+			{% include 'modals/item-modal.html' %}
+		{% endwith %}
 		<!-- End modals -->
 	</div>
 </section>

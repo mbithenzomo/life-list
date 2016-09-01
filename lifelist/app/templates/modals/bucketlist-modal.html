@@ -1,9 +1,21 @@
-<div class="modal fade" id="add-bucketlist-modal" tabindex="-1" role="dialog" aria-labelledby="addBucketlist" aria-hidden="true">
+<div class="modal fade"
+  {% if add_bucketlist %}
+    id="add-bucketlist-modal"
+  {% else %}
+    id="edit-bucketlist-{{ bucketlist.id }}-modal"
+  {% endif %}
+  tabindex="-1" role="dialog" aria-labelledby="Bucketlist" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title">Add Bucket List</h4>
+          <h4 class="modal-title">
+            {% if add_bucketlist %}
+              Add Bucket List
+            {% else %}
+              Edit Bucket List
+            {% endif %}
+          </h4>
           {% if messages %}
             {% for message in messages %}
             <br/>
@@ -15,24 +27,30 @@
           {% endif %}
         </div>
         <div id="form-modal-body" class="modal-body">
-          <form action="{% url 'add-bucketlist' %}" method="post" class="nobottommargin" enctype="multipart/form-data">
+          <form
+            {% if add_bucketlist %}
+              action="{% url 'add-bucketlist' %}"
+            {% else %}
+              action="{% url 'edit-bucketlist' pk=bucketlist.id %}"
+            {% endif %}
+            method="post" class="nobottommargin" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="row">
               <div class="col-sm-12 col-xs-12 bottommargin-sm">
                 <label>Title <span style="color: #3DB5E7; font-size: large;">*</span></label>
-                <input type="text" id="add-bucketlist-title" name="title" class="sm-form-control" placeholder="Title" pattern="[A-Za-z0-9_ ]+"
+                <input type="text" id="bucketlist-title" name="title" value="{{ bucketlist.title }}" class="sm-form-control" placeholder="Title" pattern="[A-Za-z0-9_ ]+"
                 title="Must only contain letters or numbers." required>
               </div>
               <div class="col-sm-412 col-xs-12 bottommargin-sm">
                 <label>Description <span style="color: #3DB5E7; font-size: large;">*</span></label>
-                <textarea id="add-bucketlist-description" name="description" class="sm-form-control" placeholder="Description" required></textarea>
+                <textarea id="bucketlist-description" name="description" class="sm-form-control" placeholder="Description" required>{{ bucketlist.description }}</textarea>
               </div>
               <div class="col-sm-412 col-xs-12 bottommargin-sm">
                 <label>Image</label>
                 <input type="file" name="image">
               </div>
               <div class="col-sm-12">
-                <button class="button button-3d nomargin rightmargin-sm" id="add-bucketlist-button" type="submit">Submit</button>
+                <button class="button button-3d nomargin rightmargin-sm" id="bucketlist-button" type="submit">Submit</button>
               </div>
             </div>
           </form>

@@ -351,12 +351,12 @@ class BucketlistTest(StaticLiveServerTestCase, CreateObjects):
         time.sleep(1)
 
         self.driver.find_element_by_id(
-            "add-bucketlist-title").send_keys(test_bucketlist_title)
+            "bucketlist-title").send_keys(test_bucketlist_title)
         self.driver.find_element_by_id(
-            "add-bucketlist-description").send_keys(
+            "bucketlist-description").send_keys(
                 test_bucketlist_description)
         self.driver.find_element_by_id(
-            "add-bucketlist-button").click()
+            "bucketlist-button").click()
         time.sleep(1)
 
         # Confirm addition
@@ -408,19 +408,19 @@ class BucketlistTest(StaticLiveServerTestCase, CreateObjects):
 
         # Clear existing data
         self.driver.find_element_by_id(
-            "edit-bucketlist-title").clear()
+            "bucketlist-title").clear()
         self.driver.find_element_by_id(
-            "edit-bucketlist-description").clear()
+            "bucketlist-description").clear()
 
         # Add edit data
         self.driver.find_element_by_id(
-            "edit-bucketlist-title").send_keys(
+            "bucketlist-title").send_keys(
                 test_bucketlist_title2)
         self.driver.find_element_by_id(
-            "edit-bucketlist-description").send_keys(
+            "bucketlist-description").send_keys(
                 test_bucketlist_description2)
         self.driver.find_element_by_id(
-            "edit-bucketlist-button").click()
+            "bucketlist-button").click()
         time.sleep(1)
 
         # Confirm edit
@@ -499,11 +499,11 @@ class ItemTest(StaticLiveServerTestCase, CreateObjects):
     def add_item_and_confirm(self):
         time.sleep(1)
         self.driver.find_element_by_id(
-            "add-item-title").send_keys(test_item_title)
+            "item-title").send_keys(test_item_title)
         self.driver.find_element_by_id(
-            "add-item-description").send_keys(test_item_description)
+            "item-description").send_keys(test_item_description)
         self.driver.find_element_by_id(
-            "add-item-button").click()
+            "item-button").click()
         time.sleep(1)
 
         # Confirm addition
@@ -563,17 +563,17 @@ class ItemTest(StaticLiveServerTestCase, CreateObjects):
 
         # Clear existing data
         self.driver.find_element_by_id(
-            "edit-item-title").clear()
+            "item-title").clear()
         self.driver.find_element_by_id(
-            "edit-item-description").clear()
+            "item-description").clear()
 
         # Add edit data
         self.driver.find_element_by_id(
-            "edit-item-title").send_keys(test_item_title2)
+            "item-title").send_keys(test_item_title2)
         self.driver.find_element_by_id(
-            "edit-item-description").send_keys(test_item_description2)
+            "item-description").send_keys(test_item_description2)
         self.driver.find_element_by_id(
-            "edit-item-button").click()
+            "item-button").click()
         time.sleep(1)
 
         # Confirm edit

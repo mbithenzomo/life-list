@@ -35,9 +35,11 @@
 				{% if bucketlists %}
 					{% for bucketlist in bucketlists %}
 						<!-- Modals -->
-						{% include 'modals/edit-bucketlist-modal.html' %}
-						{% include 'modals/delete-bucketlist-modal.html' %}
-						{% include 'modals/add-item-modal.html' %}
+						{% with add_bucketlist=False add_item=True %}
+							{% include 'modals/bucketlist-modal.html' %}
+							{% include 'modals/delete-bucketlist-modal.html' %}
+							{% include 'modals/item-modal.html' %}
+						{% endwith %}
 						<!-- End modals -->
 						<div class="entry clearfix">
 							<div class="row clearfix">
@@ -107,7 +109,9 @@
 				{% endif %}
 		</div>
 		<!-- Modals -->
-		{% include 'modals/add-bucketlist-modal.html' %}
+		{% with add_bucketlist=True %}
+			{% include 'modals/bucketlist-modal.html' %}
+		{% endwith %}
 		<!-- End modals -->
 	</div>
 </section>
