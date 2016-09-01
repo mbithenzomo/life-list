@@ -87,7 +87,7 @@ class BucketlistDetailView(LoginRequiredMixin, DetailView):
 
     def get(self, request, slug):
         bucketlist = get_object_or_404(Bucketlist, slug=slug)
-        items = Item.objects.filter(bucketlist=bucketlist)
+        items = Item.objects.filter(item_bucketlist=bucketlist)
         context = {'bucketlist': bucketlist, 'items': items}
         return render(request, 'bucketlist.html', context)
 
@@ -153,12 +153,11 @@ class AddItemView(LoginRequiredMixin, View):
             item.title = request.POST.get('title')
             item.description = request.POST.get('description')
             bucketlist_id = request.POST.get('bucketlist_id')
-            item.bucketlist = Bucketlist.objects.get(id=bucketlist_id)
-            item.created_by = request.user
+            item.item_bucketlist = Bucketlist.objects.get(id=bucketlist_id)
             item.save()
             return HttpResponseRedirect(reverse(
                 'bucketlist-detail',
-                kwargs={'slug': item.bucketlist.slug}))
+                kwargs={'slug': item.item_bucketlist.slug}))
 
         context = {'add_item_form': add_item_form}
         return render(request, 'dashboard.html', context)
@@ -177,7 +176,7 @@ class EditItemView(UpdateView):
     def get_success_url(self):
         item = self.get_object()
         success_url = reverse_lazy(
-            'bucketlist-detail', kwargs={'slug': item.bucketlist.slug})
+            'bucketlist-detail', kwargs={'slug': item.item_bucketlist.slug})
         return success_url
 
     def get_context_data(self, **kwargs):
@@ -199,7 +198,7 @@ class DeleteItemView(LoginRequiredMixin, DeleteView):
     def get_success_url(self):
         item = self.get_object()
         success_url = reverse_lazy(
-            'bucketlist-detail', kwargs={'slug': item.bucketlist.slug})
+            'bucketlist-detail', kwargs={'slug': item.item_bucketlist.slug})
         return success_url
 
     def get_context_data(self, **kwargs):

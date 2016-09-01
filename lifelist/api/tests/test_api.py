@@ -46,16 +46,14 @@ class TestBase(APITestCase):
         # Add first test bucket list item
         url = "/api/v1/bucketlists/" + self.first_bucketlist_id + "/items/"
         self.item = {"title": "Swim with dolphins",
-                     "description": "Swim with dolphins in Watamu",
-                     "created_by": self.test_user_id}
+                     "description": "Swim with dolphins in Watamu"}
         response = self.client.post(url, data=self.item)
         self.first_item_id = str(response.data["id"])
 
         # Add first second bucket list item
         url = "/api/v1/bucketlists/" + self.second_bucketlist_id + "/items/"
         self.item = {"title": "Visit all continents",
-                     "description": "Within 5 years",
-                     "created_by": self.test_user_id}
+                     "description": "Within 5 years"}
         response = self.client.post(url, data=self.item)
         self.second_item_id = str(response.data["id"])
 
@@ -245,8 +243,7 @@ class TestItems(TestBase):
         url = "/api/v1/bucketlists/" + self.first_bucketlist_id + "/items/"
         self.item = {"title": "Learn Japanese",
                      "description": "To fluency!",
-                     "bucketlist_id": self.first_bucketlist_id,
-                     "created_by": self.test_user_id}
+                     "item_bucketlist_id": self.first_bucketlist_id}
         self.client.credentials()
         response = self.client.post(url, data=self.item)
         self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
@@ -261,8 +258,7 @@ class TestItems(TestBase):
         url = "/api/v1/bucketlists/" + self.first_bucketlist_id + "/items/"
         self.item = {"title": "Learn Japanese",
                      "description": "To fluency!",
-                     "bucketlist_id": self.first_bucketlist_id,
-                     "created_by": self.test_user_id}
+                     "item_bucketlist_id": self.first_bucketlist_id}
         invalid_token = "1234"
         self.client.credentials(HTTP_AUTHORIZATION="Token " + invalid_token)
         response = self.client.post(url, data=self.item)
@@ -273,8 +269,7 @@ class TestItems(TestBase):
         """ Test that user can add a bucket list item"""
         url = "/api/v1/bucketlists/" + self.first_bucketlist_id + "/items/"
         self.item = {"title": "Learn Japanese",
-                     "description": "To fluency!",
-                     "created_by": self.test_user_id}
+                     "description": "To fluency!"}
         response = self.client.post(url, data=self.item)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(Item.objects.count(), 3)
@@ -347,8 +342,7 @@ class TestItems(TestBase):
 
         # Cannot edit bucket list item
         self.item = {"title": "Learn Japanese",
-                     "description": "To fluency!",
-                     "created_by": self.test_user_id}
+                     "description": "To fluency!"}
         url = ("/api/v1/bucketlists/" + self.second_bucketlist_id +
                "/items/" + self.second_item_id + "/")
         self.client.credentials(HTTP_AUTHORIZATION="Token " + token)

@@ -1,5 +1,5 @@
 from api.models import Bucketlist, Item
-from api.permissions import IsOwnerOrReadOnly
+from api.permissions import IsOwnerOrReadOnlyBucketlist, IsOwnerOrReadOnlyItem
 from api.serializers import BucketlistSerializer, ItemSerializer, \
                             UserSerializer
 from django.contrib.auth.models import User
@@ -16,7 +16,7 @@ class BucketlistViewSet(viewsets.ModelViewSet):
     queryset = Bucketlist.objects.all()
     serializer_class = BucketlistSerializer
     permission_classes = (IsAuthenticated,
-                          IsOwnerOrReadOnly,)
+                          IsOwnerOrReadOnlyBucketlist,)
 
     def perform_create(self, serializer):
         serializer.save(created_by=self.request.user)
@@ -31,12 +31,11 @@ class ItemViewSet(viewsets.ModelViewSet):
     queryset = Item.objects.all()
     serializer_class = ItemSerializer
     permission_classes = (IsAuthenticated,
-                          IsOwnerOrReadOnly,)
+                          IsOwnerOrReadOnlyItem,)
 
     def perform_create(self, serializer):
-        bucketlist_id = self.kwargs.get("bucketlist_pk")
-        serializer.save(created_by=self.request.user,
-                        bucketlist_id=bucketlist_id)
+        item_bucketlist_id = self.kwargs.get("bucketlist_pk")
+        serializer.save(item_bucketlist_id=item_bucketlist_id)
 
 
 class UserViewSet(viewsets.ModelViewSet):

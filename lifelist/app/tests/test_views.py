@@ -78,8 +78,7 @@ class CreateObjects(object):
         self.test_item = Item.objects.create(
             title=test_item_title,
             description=test_item_description,
-            bucketlist=self.test_bucketlist,
-            created_by=self.test_user)
+            item_bucketlist=self.test_bucketlist)
         self.i_title = "item_" + str(self.test_item.id) + "_title"
         self.i_description = "item_" + str(self.test_item.id) + "_description"
         return self.test_item, self.i_title, self.i_description

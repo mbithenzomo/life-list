@@ -5,12 +5,8 @@ from rest_framework import serializers
 
 class ItemSerializer(serializers.ModelSerializer):
 
-    bucketlist = serializers.StringRelatedField(
+    item_bucketlist = serializers.StringRelatedField(
         read_only=True)
-
-    created_by = serializers.SlugRelatedField(
-        read_only=True,
-        slug_field='username')
 
     date_created = serializers.DateTimeField(
         format='%d.%m.%Y %H:%M',
@@ -23,7 +19,7 @@ class ItemSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Item
-        fields = ("id", "bucketlist", "created_by", "title", "description",
+        fields = ("id", "item_bucketlist", "title", "description",
                   "date_created", "date_modified", "is_done")
 
 
