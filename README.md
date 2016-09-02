@@ -2,7 +2,6 @@
 [![Coverage Status](https://coveralls.io/repos/github/andela-mnzomo/life-list/badge.svg)](https://coveralls.io/github/andela-mnzomo/life-list)
 [![Code Health](https://landscape.io/github/andela-mnzomo/life-list/develop/landscape.svg?style=flat)](https://landscape.io/github/andela-mnzomo/life-list/develop)
 ![alt text](https://img.shields.io/badge/python-2.7-blue.svg)
-[![DUB](https://img.shields.io/dub/l/vibe-d.svg)]()
 
 # LifeList
 ![LifeList Logo](https://github.com/andela-mnzomo/life-list/blob/develop/lifelist/app/static/images/logo_blue_large.png)
@@ -61,15 +60,10 @@ Run ```python lifelist/manage.py runserver``` to launch LifeList. You may use [P
 | DELETE | Deletes an existing resource |
 
 ## Web Application
-<<<<<<< HEAD
-<<<<<<< HEAD
 LifeList also has a web application where users can register or login, and add bucket lists as well as items to their existing bucket lists. The application is live at [lifelist-app.herokuapp.com](http://lifelist-app.herokuapp.com/).
-=======
-LifeList also has a web application where users can register or login, and add bucket lists as well as items to their existing bucket lists. The application is live at [lifelist-app.herokuapp.com](http://lifelist-app.herokuapp.com/)]
->>>>>>> 0a66fed... [Chore] Update README to include a link to the live demo of LifeList on Heroku
-=======
-LifeList also has a web application where users can register or login, and add bucket lists as well as items to their existing bucket lists. The application is live at [lifelist-app.herokuapp.com](http://lifelist-app.herokuapp.com/)
->>>>>>> ef2c879... [Chore] Update README to include a link to the live demo of LifeList on Heroku
+
+![Web App](https://github.com/andela-mnzomo/life-list/blob/develop/lifelist/app/static/images/screenshot.png)
+* * *
 
 ## Testing
 To test, run the following command: `python lifelist/manage.py test lifelist`.
