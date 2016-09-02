@@ -36,6 +36,21 @@
                 <label>Description <span style="color: #3DB5E7; font-size: large;">*</span></label>
                 <textarea id="item-description" name="description" class="sm-form-control" placeholder="Description" required>{{ item.description }}</textarea>
               </div>
+              {% if not add_item %}
+              <div class="col-sm-412 col-xs-12 bottommargin-sm">
+                <label>Mark as complete?</label>
+                </br>
+                <select name="is_done" class="selectpicker">
+                  {% if item.is_done %}
+                    <option value="True">Yes</option>
+                    <option value="False">No</option>
+                  {% else %}
+                    <option value="False">No</option>
+                    <option value="True">Yes</option>
+                  {% endif %}
+                </select>
+              </div>
+              {% endif %}
               <div class="col-sm-12">
                 <button class="button button-3d nomargin rightmargin-sm" id="item-button" type="submit">Submit</button>
               </div>
@@ -46,5 +61,5 @@
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
-    </div>
- </div>
+   </div>
+</div>
