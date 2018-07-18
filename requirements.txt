@@ -19,7 +19,7 @@ pexpect==4.2.0
 pickleshare==0.7.4
 Pillow==3.3.1
 prompt-toolkit==1.0.5
-psycopg2==2.6.2
+psycopg2==2.7.1
 ptyprocess==0.5.1
 python-dateutil==2.5.3
 PyYAML==3.11
