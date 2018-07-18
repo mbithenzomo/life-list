@@ -1,10 +1,10 @@
-[![CircleCI](https://circleci.com/gh/andela-mnzomo/life-list/tree/develop.svg?style=shield)](https://circleci.com/gh/andela-mnzomo/life-list/tree/develop)
-[![Coverage Status](https://coveralls.io/repos/github/andela-mnzomo/life-list/badge.svg)](https://coveralls.io/github/andela-mnzomo/life-list)
-[![Code Health](https://landscape.io/github/andela-mnzomo/life-list/develop/landscape.svg?style=flat)](https://landscape.io/github/andela-mnzomo/life-list/develop)
-![alt text](https://img.shields.io/badge/python-2.7-blue.svg)
+[![CircleCI](https://circleci.com/gh/mbithenzomo/life-list.svg?style=svg)](https://circleci.com/gh/mbithenzomo/life-list)
+[![Coverage Status](https://coveralls.io/repos/github/mbithenzomo/life-list/badge.svg?branch=develop)](https://coveralls.io/github/mbithenzomo/life-list?branch=develop)
+[![Code Health](https://landscape.io/github/mbithenzomo/life-list/develop/landscape.svg?style=flat)](https://landscape.io/github/mbithenzomo/life-list/develop)
+![Python 2.7](https://img.shields.io/badge/python-2.7-blue.svg)
 
 # LifeList
-![LifeList Logo](https://github.com/andela-mnzomo/life-list/blob/develop/lifelist/app/static/images/logo_blue_large.png)
+![LifeList Logo](https://github.com/mbithenzomo/life-list/blob/develop/lifelist/app/static/images/logo_blue_large.png)
 
 
 According to the [Oxford Dictionary](http://www.oxforddictionaries.com/definition/english/bucket-list),
@@ -20,7 +20,7 @@ Prerequisites:
 
 Clone the repo from GitHub:
 ```
-git clone https://github.com/andela-mnzomo/life-list
+git clone https://github.com/mbithenzomo/life-list
 ```
 
 Open the life-list directory:
@@ -62,7 +62,7 @@ Run ```python lifelist/manage.py runserver``` to launch LifeList. You may use [P
 ## Web Application
 LifeList also has a web application where users can register or login, and add bucket lists as well as items to their existing bucket lists. The application is live at [lifelist-app.herokuapp.com](http://lifelist-app.herokuapp.com/).
 
-![Web App](https://github.com/andela-mnzomo/life-list/blob/develop/lifelist/app/static/images/screenshot.png)
+![Web App](https://github.com/mbithenzomo/life-list/blob/develop/lifelist/app/static/images/screenshot.png)
 * * *
 
 ## Testing
@@ -74,7 +74,7 @@ To test, run the following command: `python lifelist/manage.py test lifelist`.
 
 ## Credits and License
 
-Copyright (c) 2016 [Mbithe Nzomo](https://github.com/andela-mnzomo)
+Copyright (c) 2016 [Mbithe Nzomo](https://github.com/mbithenzomo)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
