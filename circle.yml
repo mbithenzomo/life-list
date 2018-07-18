@@ -17,4 +17,4 @@ test:
     - python lifelist/manage.py makemigrations api app
     - python lifelist/manage.py migrate --settings=lifelist.settings.testing
     - python lifelist/manage.py test lifelist --settings=lifelist.settings.testing
-    - COVERALLS_REPO_TOKEN=AjW6C6FK86YnuoQ0ui26hXMZgP2nRwJZ0 coveralls
+    - COVERALLS_REPO_TOKEN=N7nJ3de4DVve8kP1ji3FV50v3U3THPx3F coveralls
